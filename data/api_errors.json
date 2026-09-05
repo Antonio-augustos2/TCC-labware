@@ -1,0 +1,132 @@
+{
+    "total_errors": 18,
+    "last_update": "2026-09-01 21:43:19",
+    "errors": [
+        {
+            "timestamp": "2026-09-01 19:10:58",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "curriculo padrão.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 19:25:23",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "curriculo padrão.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 19:27:07",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "curriculo padrão.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 19:48:27",
+            "type": "ASSERTIVITY_FAILED",
+            "message": "API Gemini falhou na análise de assertividade",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 19:59:20",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 19:59:47",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 20:27:00",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 20:29:06",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 20:31:46",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 20:34:34",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 20:34:40",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 20:58:39",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 21:02:35",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 21:19:09",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 21:29:17",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 21:34:54",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 21:41:35",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "CurriculoAnalista.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-01 21:43:19",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "curriculo padrão.pdf",
+            "job_title": null
+        }
+    ]
+}
