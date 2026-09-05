@@ -44,3 +44,6 @@ $conn->set_charset("utf8mb4");
 if ($conn->connect_error) {
     die("Erro ao conectar ao banco de dados: " . $conn->connect_error);
 }
+
+
+define('CRON_TOKEN', 'k7j#$vP@2qL9m!zX5bN$wY3T&rQ8eF');

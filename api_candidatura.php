@@ -1,7 +1,13 @@
 <?php
 /**
- * API de Candidaturas - LabWare
- * Processa o formulário de candidatura
+ * API de Candidaturas - LabWare (REFATORADA)
+ * 
+ * NOVO FLUXO ASSÍNCRONO:
+ * 1. Valida dados do formulário e arquivo
+ * 2. Grava candidatura no banco com status 'Pendente Análise'
+ * 3. Salva arquivo em disco
+ * 4. Retorna resposta imediata ao usuário
+ * 5. O processamento com Gemini é feito via CRON (cron_analisar.php)
  */
 header('Content-Type: application/json; charset=utf-8');
 
@@ -22,6 +28,7 @@ try {
     ensureCandidaturaArquivoColumn($conn);
     ensureCandidatoStatusColumn($conn);
     ensureCandidatoCurriculoColumn($conn);
+    ensureCandidaturaStatusColumn($conn); // Coluna de status para processamento assíncrono
 
     // Verificar método POST
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -91,69 +98,39 @@ try {
     $caminhoArquivo = $uploadDir . DIRECTORY_SEPARATOR . $nomeArquivoSalvo;
     $caminhoRelativo = 'uploads/candidatos/' . $nomeArquivoSalvo;
 
-    // Registrar candidatura e deixar o candidato em estado de análise até o Gemini confirmar.
-    $idCandidatura = registerCandidatura($conn, $nome, $email, $job_id, $curriculoConteudo, $caminhoRelativo, 'Em análise');
+    // ✅ 1️⃣ REGISTRAR CANDIDATURA COM STATUS 'Pendente Análise'
+    // A análise com Gemini será feita posteriormente via CRON
+    $idCandidatura = registerCandidatura($conn, $nome, $email, $job_id, $curriculoConteudo, $caminhoRelativo, 'Pendente');
     if (!$idCandidatura) {
         http_response_code(500);
         echo json_encode(['error' => 'Erro ao registrar candidatura no banco de dados']);
         exit;
     }
 
-    // Tentar salvar o arquivo também no sistema de arquivos (backup)
+    // ✅ 2️⃣ SETAR STATUS DA CANDIDATURA COMO 'Pendente Análise'
+    if (!updateCandidaturaStatus($conn, $idCandidatura, 'Pendente Análise')) {
+        error_log("⚠ Erro ao definir status de candidatura #$idCandidatura");
+    }
+
+    // ✅ 3️⃣ SALVAR ARQUIVO NO DISCO (BACKUP)
     if (copy($arquivo['tmp_name'], $caminhoArquivo)) {
         error_log('✓ Currículo ID ' . $idCandidatura . ' salvo em: ' . $caminhoArquivo);
     } else {
         error_log('⚠ Arquivo não salvo no sistema para ID ' . $idCandidatura . ', mas currículo está no banco de dados');
     }
 
-    set_time_limit(120);
-    $analise = analyzeResumeWithGemini($arquivo, $arquivoInfo, $vaga['description']);
-    if (!$analise || !$analise['success']) {
-        $idCandidato = getCandidatoIdByCandidatura($conn, $idCandidatura);
-        if ($idCandidato !== null) {
-            updateCandidatoStatus($conn, $idCandidato, 'Em análise');
-        }
-        error_log('Erro na análise do currículo: ' . ($analise['error'] ?? 'Erro desconhecido'));
-        http_response_code(503);
-        echo json_encode(['error' => $analise['error'] ?? 'Erro ao analisar o currículo com Gemini. Tente novamente.']);
-        exit;
-    }
-
-    if (!$analise['is_curriculum']) {
-        $idCandidato = getCandidatoIdByCandidatura($conn, $idCandidatura);
-        if ($idCandidato !== null) {
-            updateCandidatoStatus($conn, $idCandidato, 'Em análise');
-        }
-        http_response_code(422);
-        echo json_encode(['error' => 'O arquivo enviado não parece ser um currículo. Envie um currículo em PDF ou DOCX.']);
-        exit;
-    }
-
     $tamanhoArquivo = strlen($curriculoConteudo);
-    error_log("📄 Arquivo lido: " . $arquivo['name'] . " - Tamanho: " . number_format($tamanhoArquivo) . " bytes para salvar em BLOB");
+    error_log("📄 [API] Arquivo processado: " . $arquivo['name'] . " - Tamanho: " . number_format($tamanhoArquivo) . " bytes");
+    error_log("✅ [API] Candidatura #$idCandidatura registrada e colocada em fila para análise");
 
-    $updateResult = updateCandidaturaAnalise($conn, $idCandidatura, $analise['assertividade'], $analise['feedback'], $caminhoRelativo);
-
-    if ($updateResult) {
-        $idCandidato = getCandidatoIdByCandidatura($conn, $idCandidatura);
-        if ($idCandidato !== null) {
-            updateCandidatoStatus($conn, $idCandidato, 'Pendente');
-        }
-
-        http_response_code(201);
-        echo json_encode([
-            'success' => true,
-            'message' => 'Candidatura enviada com sucesso!',
-            'candidatura_id' => $idCandidatura
-        ]);
-    } else {
-        $idCandidato = getCandidatoIdByCandidatura($conn, $idCandidatura);
-        if ($idCandidato !== null) {
-            updateCandidatoStatus($conn, $idCandidato, 'Em análise');
-        }
-        http_response_code(500);
-        echo json_encode(['error' => 'Erro ao registrar análise da candidatura']);
-    }
+    // ✅ 4️⃣ RETORNAR RESPOSTA IMEDIATA AO USUÁRIO
+    // A análise com Gemini será colocada em fila e processada via CRON
+    http_response_code(201);
+    echo json_encode([
+        'success' => true,
+        'message' => 'Candidatura enviada com sucesso! Sua candidatura está em fila de análise.',
+        'candidatura_id' => $idCandidatura
+    ]);
 
 } catch (Exception $e) {
     error_log('Exceção em api_candidatura.php: ' . $e->getMessage() . ' em ' . $e->getFile() . ':' . $e->getLine());

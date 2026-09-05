@@ -610,3 +610,129 @@ function analyzeResumeWithGemini($file, $fileInfo, $jobDescription) {
         'feedback' => trim((string) $secondAnalysis['feedback'])
     ];
 }
+
+/**
+ * Analisar currículo com Gemini API (executado via CRON de forma assíncrona).
+ * 
+ * Esta função é chamada pelo cron_analisar.php para processar candidaturas
+ * pendentes sem bloquear o fluxo de submissão do formulário.
+ * 
+ * @param $conn - Conexão com banco de dados
+ * @param $caminhoArquivo - Caminho do arquivo (relativo ou absoluto)
+ * @param $descricaoVaga - Descrição detalhada da vaga
+ * @param $idCandidatura - ID da candidatura sendo processada
+ * 
+ * @return array - Array com chaves:
+ *   - 'success' (bool) - Se análise foi realizada com sucesso
+ *   - 'erro' (string) - Mensagem de erro se não sucesso
+ *   - 'assertividade' (float) - Percentual de assertividade (0-100)
+ *   - 'feedback' (string) - Feedback da análise
+ */
+function analizarComApi($conn, $caminhoArquivo, $descricaoVaga, $idCandidatura) {
+    require_once 'db_functions.php';
+    
+    $idCandidatura = (int)$idCandidatura;
+    
+    error_log("📋 [CRON] Iniciando análise da candidatura #$idCandidatura");
+    
+    // 1️⃣ Validar se arquivo existe
+    if (empty($caminhoArquivo) || !file_exists($caminhoArquivo)) {
+        $mensagemErro = "Arquivo não encontrado: $caminhoArquivo";
+        error_log("❌ [CRON] $mensagemErro");
+        updateCandidaturaStatus($conn, $idCandidatura, 'Análise Erro');
+        return ['success' => false, 'erro' => $mensagemErro];
+    }
+    
+    // 2️⃣ Validar extensão do arquivo
+    $extensao = strtolower(pathinfo($caminhoArquivo, PATHINFO_EXTENSION));
+    if (!in_array($extensao, ['pdf', 'docx'], true)) {
+        $mensagemErro = "Formato de arquivo não suportado: $extensao";
+        error_log("❌ [CRON] $mensagemErro");
+        updateCandidaturaStatus($conn, $idCandidatura, 'Análise Erro');
+        return ['success' => false, 'erro' => $mensagemErro];
+    }
+    
+    // 3️⃣ Preparar dados do arquivo
+    $file = [
+        'tmp_name' => $caminhoArquivo,
+        'name' => basename($caminhoArquivo),
+        'size' => filesize($caminhoArquivo)
+    ];
+    
+    $fileInfo = ['extension' => $extensao];
+    if ($extensao === 'pdf') {
+        $fileInfo['mime'] = 'application/pdf';
+    } else {
+        $fileInfo['mime'] = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+    }
+    
+    // 4️⃣ Aumentar tempo de execução para requisição à API
+    $timeoutAnterior = ini_get('max_execution_time');
+    set_time_limit(120);
+    
+    // 5️⃣ Executar análise com Gemini
+    error_log("🤖 [CRON] Enviando para análise com Gemini...");
+    $analise = analyzeResumeWithGemini($file, $fileInfo, $descricaoVaga);
+    
+    // Restaurar timeout anterior
+    set_time_limit((int)$timeoutAnterior ?: 30);
+    
+    // 6️⃣ Validar resultado da análise
+    if (!$analise || !$analise['success']) {
+        $mensagemErro = $analise['error'] ?? 'Erro desconhecido na análise';
+        error_log("❌ [CRON] Análise com Gemini falhou: $mensagemErro");
+        updateCandidaturaStatus($conn, $idCandidatura, 'Análise Erro');
+        return ['success' => false, 'erro' => $mensagemErro];
+    }
+    
+    // 7️⃣ Verificar se é realmente um currículo
+    if (!$analise['is_curriculum']) {
+        $motivo = $analise['reason'] ?? 'Arquivo não parece ser um currículo válido';
+        error_log("⚠️  [CRON] Arquivo rejeitado como currículo: $motivo");
+        
+        // Ainda assim salvar o resultado
+        $assertividade = 0;
+        $feedback = "Arquivo rejeitado: $motivo";
+        updateCandidaturaAnalise($conn, $idCandidatura, $assertividade, $feedback, $caminhoArquivo);
+        updateCandidaturaStatus($conn, $idCandidatura, 'Análise Completa');
+        
+        return [
+            'success' => true,
+            'assertividade' => $assertividade,
+            'feedback' => $feedback
+        ];
+    }
+    
+    // 8️⃣ Extrair assertividade e feedback
+    $assertividade = $analise['assertividade'] ?? 0;
+    $feedback = $analise['feedback'] ?? '';
+    
+    // 9️⃣ Salvar resultado no banco de dados
+    $atualizouAnalise = updateCandidaturaAnalise($conn, $idCandidatura, $assertividade, $feedback, $caminhoArquivo);
+    
+    if (!$atualizouAnalise) {
+        error_log("❌ [CRON] Falha ao gravar resultado da análise no banco para candidatura #$idCandidatura");
+        updateCandidaturaStatus($conn, $idCandidatura, 'Análise Erro');
+        return ['success' => false, 'erro' => 'Falha ao gravar resultado no banco de dados'];
+    }
+    
+    // 🔟 Marcar análise como completa
+    $statusAtualizado = updateCandidaturaStatus($conn, $idCandidatura, 'Análise Completa');
+    
+    if ($statusAtualizado) {
+        error_log("✅ [CRON] Candidatura #$idCandidatura analisada com sucesso! Assertividade: " . number_format($assertividade, 2) . "%");
+        return [
+            'success' => true,
+            'assertividade' => $assertividade,
+            'feedback' => $feedback
+        ];
+    } else {
+        error_log("⚠️  [CRON] Análise concluída mas falha ao atualizar status para candidatura #$idCandidatura");
+        return [
+            'success' => true,
+            'assertividade' => $assertividade,
+            'feedback' => $feedback,
+            'aviso' => 'Análise concluída mas status não foi atualizado'
+        ];
+    }
+}

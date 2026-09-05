@@ -384,7 +384,7 @@ function registerCandidatura($conn, $nome, $email, $id_vaga, $curriculoConteudo,
             }
 
             $blobNulo = null;
-            $stmt->bind_param("ssss", $nome, $email, $statusCandidato, $blobNulo);
+            $stmt->bind_param("sssb", $nome, $email, $statusCandidato, $blobNulo);
             $stmt->send_long_data(3, $curriculoConteudo);
 
             if (!$stmt->execute()) {
@@ -586,4 +586,126 @@ function getCandidatoIdByCandidatura($conn, $idCandidatura) {
     $stmt->close();
 
     return $row['id_candidato'] ?? null;
+}
+
+/**
+ * Garantir coluna de status na tabela candidatura (para processamento assíncrono).
+ */
+function ensureCandidaturaStatusColumn($conn) {
+    $sql = "ALTER TABLE candidatura ADD COLUMN IF NOT EXISTS status VARCHAR(50) DEFAULT 'Pendente Análise'";
+    $conn->query($sql);
+}
+
+/**
+ * Buscar candidaturas pendentes de análise com Gemini.
+ * @param $conn - Conexão com banco de dados
+ * @param $limit - Limite de candidaturas a retornar (padrão 10)
+ * @return array - Array de candidaturas pendentes
+ */
+function getCandidaturasPendentes($conn, $limit = 10) {
+    ensureCandidaturaStatusColumn($conn);
+    
+    $limit = max(1, min((int)$limit, 100));
+    
+    $sql = "SELECT 
+                c.id_candidatura,
+                c.id_candidato,
+                c.id_vaga,
+                c.arquivo_path,
+                c.status,
+                ca.nome AS candidato_nome,
+                ca.email AS candidato_email,
+                v.titulo AS vaga_titulo,
+                v.descricao AS vaga_descricao
+            FROM candidatura c
+            INNER JOIN candidato ca ON ca.id_candidato = c.id_candidato
+            INNER JOIN vaga v ON v.id_vaga = c.id_vaga
+            WHERE c.status = 'Pendente Análise'
+            ORDER BY c.id_candidatura ASC
+            LIMIT $limit";
+    
+    $result = $conn->query($sql);
+    if (!$result) {
+        error_log('❌ Erro ao buscar candidaturas pendentes: ' . $conn->error);
+        return [];
+    }
+    
+    $candidaturas = [];
+    while ($row = $result->fetch_assoc()) {
+        $candidaturas[] = $row;
+    }
+    
+    return $candidaturas;
+}
+
+/**
+ * Atualizar status de uma candidatura.
+ * @param $conn - Conexão com banco de dados
+ * @param $idCandidatura - ID da candidatura
+ * @param $novoStatus - Novo status ('Pendente Análise', 'Análise Completa', 'Análise Erro')
+ * @return bool - Retorna true se atualizado com sucesso
+ */
+function updateCandidaturaStatus($conn, $idCandidatura, $novoStatus) {
+    ensureCandidaturaStatusColumn($conn);
+    
+    $idCandidatura = (int)$idCandidatura;
+    $novoStatus = $conn->real_escape_string(trim((string)$novoStatus));
+    
+    // Validar status
+    $statusValidos = ['Pendente Análise', 'Análise Completa', 'Análise Erro'];
+    if (!in_array($novoStatus, $statusValidos, true)) {
+        error_log("⚠ Status inválido para candidatura: $novoStatus");
+        return false;
+    }
+    
+    $sql = "UPDATE candidatura SET status = '$novoStatus' WHERE id_candidatura = $idCandidatura";
+    
+    if ($conn->query($sql)) {
+        error_log("✅ Status da candidatura $idCandidatura atualizado para: $novoStatus");
+        return true;
+    }
+    
+    error_log('❌ Erro ao atualizar status da candidatura ' . $idCandidatura . ': ' . $conn->error);
+    return false;
+}
+
+/**
+ * Buscar detalhes completos de uma candidatura (para processamento via CRON).
+ * @param $conn - Conexão com banco de dados
+ * @param $idCandidatura - ID da candidatura
+ * @return array|null - Dados da candidatura ou null se não encontrada
+ */
+function getCandidaturaComDetalhes($conn, $idCandidatura) {
+    ensureCandidaturaStatusColumn($conn);
+    
+    $idCandidatura = (int)$idCandidatura;
+    
+    $stmt = $conn->prepare("SELECT 
+                                c.id_candidatura,
+                                c.id_candidato,
+                                c.id_vaga,
+                                c.arquivo_path,
+                                c.status,
+                                ca.nome AS candidato_nome,
+                                ca.email AS candidato_email,
+                                v.titulo AS vaga_titulo,
+                                v.descricao AS vaga_descricao
+                            FROM candidatura c
+                            INNER JOIN candidato ca ON ca.id_candidato = c.id_candidato
+                            INNER JOIN vaga v ON v.id_vaga = c.id_vaga
+                            WHERE c.id_candidatura = ?
+                            LIMIT 1");
+    
+    if (!$stmt) {
+        error_log('❌ Erro ao preparar consulta de candidatura com detalhes: ' . $conn->error);
+        return null;
+    }
+    
+    $stmt->bind_param('i', $idCandidatura);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+    
+    return $row ?? null;
 }
