@@ -4,10 +4,11 @@
  * 
  * Este script deve ser executado periodicamente (a cada 5-15 minutos) via CRON.
  * Responsabilidades:
- * - Buscar candidaturas com status 'Pendente Análise'
- * - Processar análise com Gemini para cada uma
+ * - Buscar candidatos com status 'Em analise'
+ * - Processar análise de TODAS as candidaturas destes candidatos com Gemini
  * - Atualizar banco de dados com resultados
  * - Registrar logs detalhados
+ * - Marcar candidatos como 'Pendente' após processamento completo
  * 
  * Configuração CRON sugerida:
  * *///seu-dominio.com/cron_analisar.php?token=k7j#$vP@2qL9m!zX5bN$wY3T&rQ8eF > /dev/null 2>&1
@@ -52,15 +53,15 @@ try {
     error_log("⏰ [CRON] Timestamp: " . date('Y-m-d H:i:s'));
     error_log("⏰ [CRON] ========================================");
 
-    // 1️⃣ BUSCAR CANDIDATURAS PENDENTES
-    $candidaturasPendentes = getCandidaturasPendentes($conn, 10);
+    // 1️⃣ BUSCAR CANDIDATOS COM STATUS 'Em analise'
+    $candidatosEmAnalise = getCandidatosEmAnalise($conn, 20);
     
-    if (empty($candidaturasPendentes)) {
-        error_log("ℹ️  [CRON] Nenhuma candidatura pendente de análise");
+    if (empty($candidatosEmAnalise)) {
+        error_log("ℹ️  [CRON] Nenhum candidato em análise no momento");
         http_response_code(200);
         echo json_encode([
             'success' => true,
-            'message' => 'Nenhuma candidatura pendente',
+            'message' => 'Nenhum candidato em análise',
             'processadas' => 0,
             'sucesso' => 0,
             'erros' => 0,
@@ -69,7 +70,7 @@ try {
         exit;
     }
 
-    error_log("📋 [CRON] Encontradas " . count($candidaturasPendentes) . " candidatura(s) pendente(s)");
+    error_log("📋 [CRON] Encontrados " . count($candidatosEmAnalise) . " candidatura(s) de candidatos em análise");
 
     // 2️⃣ PROCESSAR CADA CANDIDATURA
     $resultados = [
@@ -79,12 +80,13 @@ try {
         'detalhes' => []
     ];
 
-    foreach ($candidaturasPendentes as $candidatura) {
+    foreach ($candidatosEmAnalise as $candidatura) {
         $idCandidatura = (int)$candidatura['id_candidatura'];
+        $idCandidato = (int)$candidatura['id_candidato'];
         $caminhoArquivo = __DIR__ . DIRECTORY_SEPARATOR . $candidatura['arquivo_path'];
         $descricaoVaga = $candidatura['vaga_descricao'] ?? '';
 
-        error_log("🔄 [CRON] Processando candidatura #$idCandidatura (Vaga: {$candidatura['vaga_titulo']})");
+        error_log("🔄 [CRON] Processando candidatura #$idCandidatura (Candidato: {$candidatura['candidato_nome']}, Vaga: {$candidatura['vaga_titulo']})");
 
         // Chamar função de análise assíncrona
         $resultadoAnalise = analizarComApi($conn, $caminhoArquivo, $descricaoVaga, $idCandidatura);
@@ -120,16 +122,15 @@ try {
     error_log("❌ [CRON] Erros: " . $resultados['total_erros']);
     error_log("⏰ [CRON] ========================================");
 
-    // 3️⃣ APÓS PROCESSAR O LOTE, VOLTAR O STATUS PARA 'Pendente'
-    // O objetivo é encerrar o ciclo de análise e liberar o registro para o fluxo normal.
-    $idsProcessados = array_map(static fn($item) => (int) $item['id_candidatura'], $candidaturasPendentes);
-    if (!empty($idsProcessados)) {
-        $idsLista = implode(',', array_map('intval', $idsProcessados));
+    // 3️⃣ APÓS PROCESSAR O LOTE, VOLTAR O STATUS DOS CANDIDATOS PARA 'Pendente'
+    // O objetivo é encerrar o ciclo de análise e liberar o candidato para o fluxo normal.
+    $idsCandidatos = array_unique(array_map(static fn($item) => (int) $item['id_candidato'], $candidatosEmAnalise));
+    if (!empty($idsCandidatos)) {
+        $idsLista = implode(',', array_map('intval', $idsCandidatos));
 
-        $conn->query("UPDATE candidatura SET status = 'Pendente' WHERE id_candidatura IN ($idsLista)");
-        $conn->query("UPDATE candidato c INNER JOIN candidatura ca ON ca.id_candidato = c.id_candidato SET c.status = 'Pendente' WHERE ca.id_candidatura IN ($idsLista)");
+        $conn->query("UPDATE candidato SET status = 'Pendente' WHERE id_candidato IN ($idsLista)");
 
-        error_log("🔄 [CRON] Status dos registros processados foi resetado para 'Pendente'.");
+        error_log("🔄 [CRON] Status de " . count($idsCandidatos) . " candidato(s) processado(s) foi resetado para 'Pendente'.");
     }
 
     // 4️⃣ RETORNAR RESULTADO

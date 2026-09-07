@@ -350,12 +350,18 @@ function saveCurriculoToCandidato($conn, $idCandidato, $curriculoConteudo) {
 /**
  * Registrar candidatura com currículo em BLOB
  */
-function registerCandidatura($conn, $nome, $email, $id_vaga, $curriculoConteudo, $caminhoArquivo, $statusCandidato = 'Pendente') {
+function registerCandidatura($conn, $nome, $email, $id_vaga, $curriculoConteudo, $caminhoArquivo, $statusCandidato = 'Em analise') {
     $nome = $conn->real_escape_string($nome);
     $email = $conn->real_escape_string($email);
     $id_vaga = (int)$id_vaga;
     ensureCandidatoStatusColumn($conn);
-    $statusCandidato = in_array($statusCandidato, ['Pendente', 'Em análise'], true) ? $statusCandidato : 'Pendente';
+    $statusCandidato = in_array($statusCandidato, ['Pendente', 'Em analise'], true) ? $statusCandidato : 'Em analise';
+
+    // ⚠️ VALIDAÇÃO: Candidatura DEVE ter arquivo para ser processada pelo CRON
+    if (empty($caminhoArquivo)) {
+        error_log('❌ Candidatura rejeitada: arquivo_path vazio ou null. Email: ' . $email);
+        return false;
+    }
 
     // Verificar se o candidato já existe
     $sql = "SELECT id_candidato FROM candidato WHERE email = '$email'";
@@ -433,7 +439,7 @@ function updateCandidatoStatus($conn, $idCandidato, $status) {
     ensureCandidatoStatusColumn($conn);
 
     $idCandidato = (int) $idCandidato;
-    $status = in_array($status, ['Pendente', 'Em análise'], true) ? $status : 'Pendente';
+    $status = in_array($status, ['Pendente', 'Em analise'], true) ? $status : 'Pendente';
     $status = $conn->real_escape_string($status);
 
     $sql = "UPDATE candidato SET status = '$status' WHERE id_candidato = $idCandidato";
@@ -636,6 +642,53 @@ function getCandidaturasPendentes($conn, $limit = 10) {
     }
     
     return $candidaturas;
+}
+
+/**
+ * Buscar candidatos em análise com suas candidaturas relacionadas.
+ * Processa TODOS os candidatos que estão com status 'Em analise' e suas possíveis múltiplas candidaturas.
+ * 
+ * @param $conn - Conexão com banco de dados
+ * @param $limit - Limite de candidatos a retornar (padrão 10)
+ * @return array - Array de candidatos com status 'Em analise' e suas candidaturas
+ */
+function getCandidatosEmAnalise($conn, $limit = 10) {
+    ensureCandidatoStatusColumn($conn);
+    
+    $limit = max(1, min((int)$limit, 100));
+    
+    $sql = "SELECT 
+                ca.id_candidato,
+                ca.nome AS candidato_nome,
+                ca.email AS candidato_email,
+                ca.status AS candidato_status,
+                c.id_candidatura,
+                c.id_vaga,
+                c.arquivo_path,
+                c.status AS candidatura_status,
+                c.assertividade,
+                c.feedback,
+                v.titulo AS vaga_titulo,
+                v.descricao AS vaga_descricao
+            FROM candidato ca
+            INNER JOIN candidatura c ON c.id_candidato = ca.id_candidato
+            INNER JOIN vaga v ON v.id_vaga = c.id_vaga
+            WHERE ca.status = 'Em analise' AND c.arquivo_path IS NOT NULL AND c.arquivo_path != ''
+            ORDER BY ca.id_candidato ASC, c.id_candidatura ASC
+            LIMIT $limit";
+    
+    $result = $conn->query($sql);
+    if (!$result) {
+        error_log('❌ Erro ao buscar candidatos em análise: ' . $conn->error);
+        return [];
+    }
+    
+    $candidatos = [];
+    while ($row = $result->fetch_assoc()) {
+        $candidatos[] = $row;
+    }
+    
+    return $candidatos;
 }
 
 /**

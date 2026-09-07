@@ -98,21 +98,16 @@ try {
     $caminhoArquivo = $uploadDir . DIRECTORY_SEPARATOR . $nomeArquivoSalvo;
     $caminhoRelativo = 'uploads/candidatos/' . $nomeArquivoSalvo;
 
-    // ✅ 1️⃣ REGISTRAR CANDIDATURA COM STATUS 'Pendente Análise'
-    // A análise com Gemini será feita posteriormente via CRON
-    $idCandidatura = registerCandidatura($conn, $nome, $email, $job_id, $curriculoConteudo, $caminhoRelativo, 'Pendente');
+    // ✅ 1️⃣ REGISTRAR CANDIDATURA COM STATUS 'Em analise'
+    // O candidato é marcado como 'Em analise' automaticamente para processamento do CRON
+    $idCandidatura = registerCandidatura($conn, $nome, $email, $job_id, $curriculoConteudo, $caminhoRelativo);
     if (!$idCandidatura) {
         http_response_code(500);
         echo json_encode(['error' => 'Erro ao registrar candidatura no banco de dados']);
         exit;
     }
 
-    // ✅ 2️⃣ SETAR STATUS DA CANDIDATURA COMO 'Pendente Análise'
-    if (!updateCandidaturaStatus($conn, $idCandidatura, 'Pendente Análise')) {
-        error_log("⚠ Erro ao definir status de candidatura #$idCandidatura");
-    }
-
-    // ✅ 3️⃣ SALVAR ARQUIVO NO DISCO (BACKUP)
+    // ✅ 2️⃣ SALVAR ARQUIVO NO DISCO (BACKUP)
     if (copy($arquivo['tmp_name'], $caminhoArquivo)) {
         error_log('✓ Currículo ID ' . $idCandidatura . ' salvo em: ' . $caminhoArquivo);
     } else {
@@ -121,9 +116,9 @@ try {
 
     $tamanhoArquivo = strlen($curriculoConteudo);
     error_log("📄 [API] Arquivo processado: " . $arquivo['name'] . " - Tamanho: " . number_format($tamanhoArquivo) . " bytes");
-    error_log("✅ [API] Candidatura #$idCandidatura registrada e colocada em fila para análise");
+    error_log("✅ [API] Candidatura #$idCandidatura registrada com candidato marcado para análise");
 
-    // ✅ 4️⃣ RETORNAR RESPOSTA IMEDIATA AO USUÁRIO
+    // ✅ 3️⃣ RETORNAR RESPOSTA IMEDIATA AO USUÁRIO
     // A análise com Gemini será colocada em fila e processada via CRON
     http_response_code(201);
     echo json_encode([

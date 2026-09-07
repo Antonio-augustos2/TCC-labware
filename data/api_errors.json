@@ -1,6 +1,6 @@
 {
-    "total_errors": 18,
-    "last_update": "2026-09-01 21:43:19",
+    "total_errors": 27,
+    "last_update": "2026-09-06 09:02:35",
     "errors": [
         {
             "timestamp": "2026-09-01 19:10:58",
@@ -126,6 +126,69 @@
             "type": "VALIDATION_FAILED",
             "message": "API Gemini falhou na validação do currículo",
             "file_name": "curriculo padrão.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-06 08:19:52",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "candidatura_1788643780_77eecc63.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-06 08:20:39",
+            "type": "ASSERTIVITY_FAILED",
+            "message": "API Gemini falhou na análise de assertividade",
+            "file_name": "candidatura_1788675263_fe920af3.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-06 08:21:43",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "candidatura_1788675263_fe920af3.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-06 08:25:58",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "candidatura_1788574755_b7eeb68c.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-06 08:37:46",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "candidatura_1788574755_b7eeb68c.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-06 08:38:00",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "candidatura_1788574755_b7eeb68c.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-06 08:41:54",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "candidatura_1788576330_3acfefe5.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-06 08:42:11",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "candidatura_1788576330_3acfefe5.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-06 09:02:35",
+            "type": "ASSERTIVITY_FAILED",
+            "message": "API Gemini falhou na análise de assertividade",
+            "file_name": "candidatura_1788677900_b19e1845.pdf",
             "job_title": null
         }
     ]
