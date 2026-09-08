@@ -19,18 +19,44 @@ $candidaturasParaReprocessamento = array_filter($candidaturas, function($c) {
     return $status !== 'Pendente';
 });
 
+$totalCandidaturas = count($candidaturas);
+$totalPendentes = count(array_filter($candidaturas, function($c) {
+    $status = $c['candidato_status'] ?? $c['candidatura_status'] ?? 'Pendente';
+    return $status === 'Pendente';
+}));
+$totalAnalisadas = $totalCandidaturas - $totalPendentes;
+
 $pageTitle = 'Assertividade e Feedback - LabWare';
 include 'header.php';
 ?>
 <main class="container analysis-page">
-    <section class="analysis-header">
+    <section class="admin-header analysis-header">
+        <span class="analysis-eyebrow"><i class="fas fa-chart-line"></i> Gestão de talentos</span>
         <h2>Assertividade e feedback das candidaturas</h2>
-        <p class="section-subtitle">Consulte a relação entre cada currículo recebido, a vaga escolhida, a assertividade da análise e o feedback gerado.</p>
+        <p>Consulte a relação entre cada currículo recebido, a vaga escolhida, a assertividade da análise e o feedback gerado.</p>
+    </section>
+
+    <section class="analysis-summary" aria-label="Resumo das candidaturas">
+        <div class="summary-card summary-total">
+            <span class="summary-icon"><i class="fas fa-users"></i></span>
+            <div><strong><?= $totalCandidaturas ?></strong><span>Total de candidaturas</span></div>
+        </div>
+        <div class="summary-card summary-ready">
+            <span class="summary-icon"><i class="fas fa-circle-check"></i></span>
+            <div><strong><?= $totalAnalisadas ?></strong><span>Em análise</span></div>
+        </div>
+        <div class="summary-card summary-pending">
+            <span class="summary-icon"><i class="fas fa-clock"></i></span>
+            <div><strong><?= $totalPendentes ?></strong><span>Pendentes</span></div>
+        </div>
     </section>
 
     <section class="admin-card analysis-card" aria-labelledby="analysis-title">
         <div class="analysis-header-toolbar">
-            <h3 id="analysis-title">Currículos analisados</h3>
+            <div>
+                <span class="card-eyebrow">Painel de análise</span>
+                <h3 id="analysis-title">Currículos recebidos</h3>
+            </div>
             <?php if (!empty($candidaturasParaReprocessamento)): ?>
                 <div class="toolbar-actions">
                     <button id="btnReprocessarComGemini" class="btn btn-primary" onclick="reprocessarCandidaturas()">
@@ -43,6 +69,7 @@ include 'header.php';
         <?php if (count($candidaturas) === 0): ?>
             <p class="empty-state">Nenhuma candidatura encontrada.</p>
         <?php else: ?>
+            <div class="analysis-table-wrapper">
             <table class="analysis-table">
                 <thead>
                     <tr>
@@ -87,7 +114,7 @@ include 'header.php';
                             </td>
                             <td class="feedback-text">
                                 <?php if ($candidatura['feedback'] !== null && trim($candidatura['feedback']) !== ''): ?>
-                                    <?= nl2br(htmlspecialchars($candidatura['feedback'])) ?>
+                                    <?= htmlspecialchars(trim(preg_replace('/\s+/u', ' ', (string) $candidatura['feedback'])), ENT_QUOTES, 'UTF-8') ?>
                                 <?php else: ?>
                                     <span class="application-id">Ainda não disponível</span>
                                 <?php endif; ?>
@@ -97,6 +124,7 @@ include 'header.php';
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            </div>
         <?php endif; ?>
     </section>
 </main>

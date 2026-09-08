@@ -46,4 +46,6 @@ if ($conn->connect_error) {
 }
 
 
-define('CRON_TOKEN', 'k7j#$vP@2qL9m!zX5bN$wY3T&rQ8eF');
+// Use only URL-safe characters because this value is sent in ?token=...
+// Prefer setting CRON_TOKEN in .env in production.
+define('CRON_TOKEN', getenv('CRON_TOKEN') ?: 'k7j-P2qL9m_zX5bN-wY3T-rQ8eF');

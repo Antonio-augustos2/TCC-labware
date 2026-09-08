@@ -124,7 +124,11 @@ define('CRON_TOKEN', 'seu_token_muito_secreto_123456789');
 3. **Execute a Tarefa Manualmente:**
    - No Task Scheduler, clique direito na tarefa
    - Selecione **"Run"**
-   - Verifique os logs do PHP (xampp/logs/php_error_log)
+   - Verifique o log dedicado do cron em:
+   ```
+   C:\xampp\htdocs\TCC-labware-main\data\cron_analisar.log
+   ```
+   - O arquivo registra início, autenticação, candidaturas processadas, erros e resumo final.
 
 ---
 

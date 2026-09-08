@@ -2,6 +2,17 @@
 require_once 'config.php';
 require_once 'db_functions.php';
 
+function renderJobDescription($description) {
+    $escaped = htmlspecialchars((string) $description, ENT_QUOTES, 'UTF-8');
+    $escaped = preg_replace(
+        '/\*\*(Descrição do trabalho|Responsabilidades|Requisitos Desejáveis|Remuneração e Benefícios|Informações Adicionais)\*\*/u',
+        '<strong class="job-description-heading">$1</strong>',
+        $escaped
+    );
+
+    return nl2br($escaped);
+}
+
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 $job = null;
 
@@ -30,7 +41,7 @@ include 'header.php';
             <span class="job-badge"><?= htmlspecialchars($job['type']) ?></span>
             <p class="job-location">Local: <?= htmlspecialchars($job['location']) ?></p>
             <div class="job-description-block">
-                <?= nl2br(htmlspecialchars($job['description'])) ?>
+                <?= renderJobDescription($job['description']) ?>
             </div>
             <div class="job-actions">
                 <a href="index.html#formulario" class="btn">Candidatar-se</a>

@@ -55,9 +55,10 @@ Adicione ao seu `config.php`:
 define('CRON_TOKEN', 'seu_token_super_secreto_aqui_mude_em_producao');
 ```
 
-**⚠️ IMPORTANTE**: Use um token bem aleatório e seguro. Exemplo:
+**⚠️ IMPORTANTE**: Use um token bem aleatório, seguro e compatível com URL
+(somente letras, números, `-` e `_`). Exemplo:
 ```
-CRON_TOKEN = 'k7j#$vP@2qL9m!zX5bN$wY3T&rQ8eF'
+CRON_TOKEN = 'k7j-P2qL9m_zX5bN-wY3T-rQ8eF'
 ```
 
 ---

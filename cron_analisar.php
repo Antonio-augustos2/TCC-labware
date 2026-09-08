@@ -11,21 +11,53 @@
  * - Marcar candidatos como 'Pendente' após processamento completo
  * 
  * Configuração CRON sugerida:
- * *///seu-dominio.com/cron_analisar.php?token=k7j#$vP@2qL9m!zX5bN$wY3T&rQ8eF > /dev/null 2>&1
- 
- // Nota: A linha acima é um exemplo de CRON, não código PHP
- //
+ * curl -s "https://seu-dominio.com/cron_analisar.php?token=SEU_TOKEN_URL_SAFE" > /dev/null 2>&1
+ */
+
+$cronLogFile = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'cron_analisar.log';
+
+function cronLog($message, $level = 'INFO') {
+    global $cronLogFile;
+
+    $line = sprintf(
+        "[%s] [%s] [PID %s] %s%s",
+        date('Y-m-d H:i:s'),
+        $level,
+        getmypid(),
+        $message,
+        PHP_EOL
+    );
+
+    @file_put_contents($cronLogFile, $line, FILE_APPEND | LOCK_EX);
+}
+
+// Direciona também os erros nativos do PHP para o log dedicado.
+@ini_set('log_errors', '1');
+@ini_set('error_log', $cronLogFile);
+$requestUri = $_SERVER['REQUEST_URI'] ?? 'CLI';
+$requestPath = parse_url($requestUri, PHP_URL_PATH) ?: 'CLI';
+cronLog('Execução iniciada. Método: ' . ($_SERVER['REQUEST_METHOD'] ?? 'CLI') . '; Caminho: ' . $requestPath);
+
+// Registra erros fatais que não passam pelo try/catch.
+register_shutdown_function(function () {
+    $error = error_get_last();
+    if ($error !== null && in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR], true)) {
+        cronLog(sprintf('Erro fatal [%d]: %s em %s:%d', $error['type'], $error['message'], $error['file'], $error['line']), 'FATAL');
+    }
+});
+
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'config.php';
 
 // Apenas JSON será retornado
 header('Content-Type: application/json; charset=utf-8');
 
-// Token de segurança - altere isso em produção!
-// Pode ser definido em config.php ou aqui
-$CRON_TOKEN = defined('CRON_TOKEN') ? CRON_TOKEN : 'k7j#$vP@2qL9m!zX5bN$wY3T&rQ8eF';
+// O token deve ser URL-safe (sem #, &, ?, espaços ou acentos).
+$CRON_TOKEN = defined('CRON_TOKEN') ? (string) CRON_TOKEN : '';
 
 // Validar token
 $tokenRecebido = $_GET['token'] ?? '';
-if (empty($CRON_TOKEN) || $tokenRecebido !== $CRON_TOKEN) {
+if ($CRON_TOKEN === '' || !is_string($tokenRecebido) || !hash_equals($CRON_TOKEN, $tokenRecebido)) {
+    cronLog('Autenticação recusada: token ausente ou inválido.', 'ERROR');
     http_response_code(401);
     echo json_encode([
         'error' => 'Token inválido ou não fornecido',
@@ -34,13 +66,14 @@ if (empty($CRON_TOKEN) || $tokenRecebido !== $CRON_TOKEN) {
     exit;
 }
 
+cronLog('Autenticação validada. Iniciando processamento.');
+
 // Log de erro customizado
 set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-    error_log("[CRON] Erro PHP [$errno]: $errstr em $errfile:$errline");
+    cronLog("Erro PHP [$errno]: $errstr em $errfile:$errline", 'ERROR');
 });
 
 try {
-    require_once 'config.php';
     require_once 'db_functions.php';
     require_once 'gemini_service.php';
 
@@ -48,16 +81,14 @@ try {
     ensureCandidaturaStatusColumn($conn);
     ensureCandidatoStatusColumn($conn);
 
-    error_log("⏰ [CRON] ========================================");
-    error_log("⏰ [CRON] Iniciando processamento de análises");
-    error_log("⏰ [CRON] Timestamp: " . date('Y-m-d H:i:s'));
-    error_log("⏰ [CRON] ========================================");
+    cronLog('========================================');
+    cronLog('Iniciando processamento de análises');
 
     // 1️⃣ BUSCAR CANDIDATOS COM STATUS 'Em analise'
     $candidatosEmAnalise = getCandidatosEmAnalise($conn, 20);
     
     if (empty($candidatosEmAnalise)) {
-        error_log("ℹ️  [CRON] Nenhum candidato em análise no momento");
+        cronLog('Nenhum candidato em análise no momento');
         http_response_code(200);
         echo json_encode([
             'success' => true,
@@ -70,7 +101,7 @@ try {
         exit;
     }
 
-    error_log("📋 [CRON] Encontrados " . count($candidatosEmAnalise) . " candidatura(s) de candidatos em análise");
+    cronLog('Encontrados ' . count($candidatosEmAnalise) . ' candidatura(s) de candidatos em análise');
 
     // 2️⃣ PROCESSAR CADA CANDIDATURA
     $resultados = [
@@ -86,7 +117,7 @@ try {
         $caminhoArquivo = __DIR__ . DIRECTORY_SEPARATOR . $candidatura['arquivo_path'];
         $descricaoVaga = $candidatura['vaga_descricao'] ?? '';
 
-        error_log("🔄 [CRON] Processando candidatura #$idCandidatura (Candidato: {$candidatura['candidato_nome']}, Vaga: {$candidatura['vaga_titulo']})");
+        cronLog("Processando candidatura #$idCandidatura (Candidato: {$candidatura['candidato_nome']}, Vaga: {$candidatura['vaga_titulo']})");
 
         // Chamar função de análise assíncrona
         $resultadoAnalise = analizarComApi($conn, $caminhoArquivo, $descricaoVaga, $idCandidatura);
@@ -115,12 +146,12 @@ try {
         }
     }
 
-    error_log("⏰ [CRON] ========================================");
-    error_log("✅ [CRON] Processamento concluído!");
-    error_log("📊 [CRON] Total processadas: " . $resultados['total_processadas']);
-    error_log("✅ [CRON] Sucesso: " . $resultados['total_sucesso']);
-    error_log("❌ [CRON] Erros: " . $resultados['total_erros']);
-    error_log("⏰ [CRON] ========================================");
+    cronLog('========================================');
+    cronLog('Processamento concluído!');
+    cronLog('Total processadas: ' . $resultados['total_processadas']);
+    cronLog('Sucesso: ' . $resultados['total_sucesso']);
+    cronLog('Erros: ' . $resultados['total_erros']);
+    cronLog('========================================');
 
     // 3️⃣ APÓS PROCESSAR O LOTE, VOLTAR O STATUS DOS CANDIDATOS PARA 'Pendente'
     // O objetivo é encerrar o ciclo de análise e liberar o candidato para o fluxo normal.
@@ -130,7 +161,7 @@ try {
 
         $conn->query("UPDATE candidato SET status = 'Pendente' WHERE id_candidato IN ($idsLista)");
 
-        error_log("🔄 [CRON] Status de " . count($idsCandidatos) . " candidato(s) processado(s) foi resetado para 'Pendente'.");
+        cronLog('Status de ' . count($idsCandidatos) . " candidato(s) processado(s) foi resetado para 'Pendente'.");
     }
 
     // 4️⃣ RETORNAR RESULTADO
@@ -145,8 +176,8 @@ try {
         'timestamp' => date('Y-m-d H:i:s')
     ]);
 
-} catch (Exception $e) {
-    error_log('[CRON] Exceção: ' . $e->getMessage() . ' em ' . $e->getFile() . ':' . $e->getLine());
+} catch (Throwable $e) {
+    cronLog('Exceção: ' . $e->getMessage() . ' em ' . $e->getFile() . ':' . $e->getLine(), 'FATAL');
     http_response_code(500);
     echo json_encode([
         'error' => 'Erro ao processar análises: ' . $e->getMessage(),

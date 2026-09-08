@@ -1,4 +1,9 @@
-<?php $pageTitle = 'LabWare - Transforme a Gestão Laboratorial'; ?>
+<?php
+$pageTitle = 'LabWare - Transforme a Gestão Laboratorial';
+require_once 'config.php';
+require_once 'db_functions.php';
+$feedbacksPublicos = getFeedbacksPublicos($conn);
+?>
 <?php include 'header.php'; ?>
 
   <!-- HERO -->
@@ -72,28 +77,28 @@
   <section class="testimonials">
     <div class="container">
       <h2>O Que Dizem Nossos Colaboradores</h2>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <p>"Trabalhar na LabWare me permitiu unir minha paixão por tecnologia com impacto real na área da saúde. Desenvolver sistemas que melhoram a gestão de laboratórios é extremamente gratificante."</p>
-          <div class="testimonial-author">Ana Silva</div>
-          <div class="testimonial-role">Desenvolvedora Full Stack</div>
+      <?php if (count($feedbacksPublicos) > 0): ?>
+      <div class="testimonial-carousel-container">
+        <button type="button" class="carousel-btn testimonial-prev" aria-label="Feedback anterior"><i class="fas fa-chevron-left"></i></button>
+        <div class="testimonial-carousel-wrapper">
+          <div class="testimonial-carousel" id="testimonial-carousel">
+        <?php foreach ($feedbacksPublicos as $feedback): ?>
+          <div class="testimonial-slide">
+            <div class="testimonial-card <?= $feedback['highlight'] ? 'testimonial-highlight' : '' ?>">
+              <p><i class="fas fa-quote-left" style="margin-right: 8px; opacity: 0.7;"></i> <?= nl2br(htmlspecialchars($feedback['message'])) ?></p>
+              <div class="testimonial-author"><?= htmlspecialchars($feedback['author']) ?></div>
+              <div class="testimonial-role"><?= htmlspecialchars($feedback['role']) ?></div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+          </div>
         </div>
-        <div class="testimonial-card">
-          <p>"A cultura de aprendizado contínuo aqui é incrível. Tive a oportunidade de me especializar em sistemas de gestão laboratorial e crescer junto com a empresa."</p>
-          <div class="testimonial-author">Carlos Santos</div>
-          <div class="testimonial-role">Engenheiro de Software</div>
-        </div>
-        <div class="testimonial-card testimonial-highlight">
-          <p><i class="fas fa-quote-left" style="margin-right: 8px; opacity: 0.7;"></i> Todos nós precisamos de pessoas que nos deem feedback. É assim que melhoramos.</p>
-          <div class="testimonial-author">Equipe LabWare</div>
-          <div class="testimonial-role" style="color: #bfdbfe;">Tecnologia e Trabalho em Equipe</div>
-        </div>
-        <div class="testimonial-card">
-          <p><i class="fas fa-quote-left" style="margin-right: 8px; color: #2563eb;"></i> Nosso ambiente combina inovação tecnológica com colaboração constante, criando soluções que fazem diferença real na gestão laboratorial.</p>
-          <div class="testimonial-author">Time de Produto</div>
-          <div class="testimonial-role">LabWare</div>
-        </div>
+        <button type="button" class="carousel-btn testimonial-next" aria-label="Próximo feedback"><i class="fas fa-chevron-right"></i></button>
       </div>
+      <div class="testimonial-indicators" id="testimonial-indicators"></div>
+      <?php else: ?>
+        <p class="empty-state">Nenhum feedback publicado ainda.</p>
+      <?php endif; ?>
     </div>
   </section>
 

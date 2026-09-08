@@ -1,0 +1,298 @@
+[2026-09-08 15:19:25] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 15:19:25] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 15:19:25] [INFO] [PID 23764] ========================================
+[2026-09-08 15:19:25] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 15:19:25] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 15:20:02] [INFO] [PID 3004] Execução iniciada. Método: CLI; Caminho: CLI
+[2026-09-08 15:20:02] [ERROR] [PID 3004] Autenticação recusada: token ausente ou inválido.
+[2026-09-08 15:21:12] [INFO] [PID 6044] Execução iniciada. Método: CLI; Caminho: CLI
+[2026-09-08 15:21:12] [ERROR] [PID 6044] Autenticação recusada: token ausente ou inválido.
+[2026-09-08 15:25:03] [INFO] [PID 17768] Execução iniciada. Método: CLI; Caminho: CLI
+[2026-09-08 15:25:03] [ERROR] [PID 17768] Autenticação recusada: token ausente ou inválido.
+[2026-09-08 15:25:40] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 15:25:40] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 15:25:40] [INFO] [PID 23764] ========================================
+[2026-09-08 15:25:40] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 15:25:40] [INFO] [PID 23764] Encontrados 1 candidatura(s) de candidatos em análise
+[2026-09-08 15:25:40] [INFO] [PID 23764] Processando candidatura #39 (Candidato: hect, Vaga: Analista de dados - pleno)
+[08-Sep-2026 15:25:40 Europe/Berlin] 📋 [CRON] Iniciando análise da candidatura #39
+[08-Sep-2026 15:25:40 Europe/Berlin] 🤖 [CRON] Enviando para análise com Gemini...
+[08-Sep-2026 15:25:40 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[08-Sep-2026 15:25:44 Europe/Berlin] ✓ Gemini API sucesso com modelo gemini-3.6-flash
+[08-Sep-2026 15:25:44 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[08-Sep-2026 15:25:49 Europe/Berlin] ✓ Gemini API sucesso com modelo gemini-3.6-flash
+[08-Sep-2026 15:25:49 Europe/Berlin] ✅ Status da candidatura 39 atualizado para: Análise Completa
+[08-Sep-2026 15:25:49 Europe/Berlin] ✅ [CRON] Candidatura #39 analisada com sucesso! Assertividade: 100.00%
+[2026-09-08 15:25:49] [INFO] [PID 23764] ========================================
+[2026-09-08 15:25:49] [INFO] [PID 23764] Processamento concluído!
+[2026-09-08 15:25:49] [INFO] [PID 23764] Total processadas: 1
+[2026-09-08 15:25:49] [INFO] [PID 23764] Sucesso: 1
+[2026-09-08 15:25:49] [INFO] [PID 23764] Erros: 0
+[2026-09-08 15:25:49] [INFO] [PID 23764] ========================================
+[2026-09-08 15:25:49] [INFO] [PID 23764] Status de 1 candidato(s) processado(s) foi resetado para 'Pendente'.
+[2026-09-08 15:25:49] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 15:25:49] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 15:25:49] [INFO] [PID 23764] ========================================
+[2026-09-08 15:25:49] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 15:25:49] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 15:30:03] [INFO] [PID 16364] Execução iniciada. Método: CLI; Caminho: CLI
+[2026-09-08 15:30:03] [ERROR] [PID 16364] Autenticação recusada: token ausente ou inválido.
+[2026-09-08 15:41:38] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 15:41:38] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 15:41:38] [INFO] [PID 23764] ========================================
+[2026-09-08 15:41:38] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 15:41:38] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 15:41:41] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 15:41:41] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 15:41:41] [INFO] [PID 23764] ========================================
+[2026-09-08 15:41:41] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 15:41:41] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 15:44:04] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 15:44:04] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 15:44:04] [INFO] [PID 23764] ========================================
+[2026-09-08 15:44:04] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 15:44:04] [INFO] [PID 23764] Encontrados 1 candidatura(s) de candidatos em análise
+[2026-09-08 15:44:04] [INFO] [PID 23764] Processando candidatura #40 (Candidato: hello, Vaga: Analista de dados - pleno)
+[08-Sep-2026 15:44:04 Europe/Berlin] 📋 [CRON] Iniciando análise da candidatura #40
+[08-Sep-2026 15:44:04 Europe/Berlin] 🤖 [CRON] Enviando para análise com Gemini...
+[08-Sep-2026 15:44:04 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[2026-09-08 15:44:04] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 15:44:04] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 15:44:04] [INFO] [PID 23764] ========================================
+[2026-09-08 15:44:04] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 15:44:04] [INFO] [PID 23764] Encontrados 1 candidatura(s) de candidatos em análise
+[2026-09-08 15:44:04] [INFO] [PID 23764] Processando candidatura #40 (Candidato: hello, Vaga: Analista de dados - pleno)
+[08-Sep-2026 15:44:04 Europe/Berlin] 📋 [CRON] Iniciando análise da candidatura #40
+[08-Sep-2026 15:44:04 Europe/Berlin] 🤖 [CRON] Enviando para análise com Gemini...
+[08-Sep-2026 15:44:04 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[08-Sep-2026 15:44:09 Europe/Berlin] ⏳ HTTP 503 - Quota ou sobrecarga. Mensagem: This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try
+[08-Sep-2026 15:44:09 Europe/Berlin] ⏳ Aguardando 4s antes de retry...
+[08-Sep-2026 15:44:10 Europe/Berlin] ⏳ HTTP 503 - Quota ou sobrecarga. Mensagem: This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try
+[08-Sep-2026 15:44:10 Europe/Berlin] ⏳ Aguardando 4s antes de retry...
+[08-Sep-2026 15:44:13 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 2/3)
+[08-Sep-2026 15:44:14 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 2/3)
+[08-Sep-2026 15:44:17 Europe/Berlin] ✓ Gemini API sucesso com modelo gemini-3.6-flash
+[08-Sep-2026 15:44:17 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[08-Sep-2026 15:44:22 Europe/Berlin] ✓ Gemini API sucesso com modelo gemini-3.6-flash
+[08-Sep-2026 15:44:22 Europe/Berlin] ✅ Status da candidatura 40 atualizado para: Análise Completa
+[08-Sep-2026 15:44:22 Europe/Berlin] ✅ [CRON] Candidatura #40 analisada com sucesso! Assertividade: 100.00%
+[2026-09-08 15:44:22] [INFO] [PID 23764] ========================================
+[2026-09-08 15:44:22] [INFO] [PID 23764] Processamento concluído!
+[2026-09-08 15:44:22] [INFO] [PID 23764] Total processadas: 1
+[2026-09-08 15:44:22] [INFO] [PID 23764] Sucesso: 1
+[2026-09-08 15:44:22] [INFO] [PID 23764] Erros: 0
+[2026-09-08 15:44:22] [INFO] [PID 23764] ========================================
+[2026-09-08 15:44:22] [INFO] [PID 23764] Status de 1 candidato(s) processado(s) foi resetado para 'Pendente'.
+[08-Sep-2026 15:44:58 Europe/Berlin] ✓ Gemini API sucesso com modelo gemini-3.6-flash
+[08-Sep-2026 15:44:58 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[08-Sep-2026 15:45:02 Europe/Berlin] ⏳ HTTP 503 - Quota ou sobrecarga. Mensagem: This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try
+[08-Sep-2026 15:45:02 Europe/Berlin] ⏳ Aguardando 4s antes de retry...
+[08-Sep-2026 15:45:06 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 2/3)
+[08-Sep-2026 15:45:14 Europe/Berlin] ✓ Gemini API sucesso com modelo gemini-3.6-flash
+[08-Sep-2026 15:45:14 Europe/Berlin] ✅ Status da candidatura 40 atualizado para: Análise Completa
+[08-Sep-2026 15:45:14 Europe/Berlin] ✅ [CRON] Candidatura #40 analisada com sucesso! Assertividade: 100.00%
+[2026-09-08 15:45:14] [INFO] [PID 23764] ========================================
+[2026-09-08 15:45:14] [INFO] [PID 23764] Processamento concluído!
+[2026-09-08 15:45:14] [INFO] [PID 23764] Total processadas: 1
+[2026-09-08 15:45:14] [INFO] [PID 23764] Sucesso: 1
+[2026-09-08 15:45:14] [INFO] [PID 23764] Erros: 0
+[2026-09-08 15:45:14] [INFO] [PID 23764] ========================================
+[2026-09-08 15:45:14] [INFO] [PID 23764] Status de 1 candidato(s) processado(s) foi resetado para 'Pendente'.
+[2026-09-08 15:50:02] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 15:50:02] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 15:50:02] [INFO] [PID 23764] ========================================
+[2026-09-08 15:50:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 15:50:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 15:55:02] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 15:55:02] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 15:55:02] [INFO] [PID 23764] ========================================
+[2026-09-08 15:55:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 15:55:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 16:00:02] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 16:00:02] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 16:00:02] [INFO] [PID 23764] ========================================
+[2026-09-08 16:00:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 16:00:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 16:05:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 16:05:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 16:05:01] [INFO] [PID 23764] ========================================
+[2026-09-08 16:05:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 16:05:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 16:10:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 16:10:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 16:10:01] [INFO] [PID 23764] ========================================
+[2026-09-08 16:10:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 16:10:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 16:15:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 16:15:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 16:15:01] [INFO] [PID 23764] ========================================
+[2026-09-08 16:15:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 16:15:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 16:20:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 16:20:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 16:20:01] [INFO] [PID 23764] ========================================
+[2026-09-08 16:20:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 16:20:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 16:25:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 16:25:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 16:25:01] [INFO] [PID 23764] ========================================
+[2026-09-08 16:25:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 16:25:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 16:30:05] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 16:30:05] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 16:30:05] [INFO] [PID 23764] ========================================
+[2026-09-08 16:30:05] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 16:30:05] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 18:35:49] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 18:35:50] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 18:35:50] [INFO] [PID 23764] ========================================
+[2026-09-08 18:35:50] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 18:35:51] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 18:40:02] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 18:40:02] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 18:40:02] [INFO] [PID 23764] ========================================
+[2026-09-08 18:40:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 18:40:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 18:45:03] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 18:45:03] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 18:45:03] [INFO] [PID 23764] ========================================
+[2026-09-08 18:45:03] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 18:45:03] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 18:50:02] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 18:50:02] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 18:50:02] [INFO] [PID 23764] ========================================
+[2026-09-08 18:50:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 18:50:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 18:55:02] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 18:55:02] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 18:55:02] [INFO] [PID 23764] ========================================
+[2026-09-08 18:55:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 18:55:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 19:00:02] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 19:00:02] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 19:00:02] [INFO] [PID 23764] ========================================
+[2026-09-08 19:00:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 19:00:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 19:11:08] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 19:11:08] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 19:11:08] [INFO] [PID 23764] ========================================
+[2026-09-08 19:11:08] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 19:11:08] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 19:15:02] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 19:15:02] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 19:15:02] [INFO] [PID 23764] ========================================
+[2026-09-08 19:15:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 19:15:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 19:20:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 19:20:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 19:20:01] [INFO] [PID 23764] ========================================
+[2026-09-08 19:20:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 19:20:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 19:25:02] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 19:25:02] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 19:25:02] [INFO] [PID 23764] ========================================
+[2026-09-08 19:25:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 19:25:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 19:30:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 19:30:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 19:30:01] [INFO] [PID 23764] ========================================
+[2026-09-08 19:30:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 19:30:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 19:35:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 19:35:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 19:35:01] [INFO] [PID 23764] ========================================
+[2026-09-08 19:35:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 19:35:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 19:40:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 19:40:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 19:40:01] [INFO] [PID 23764] ========================================
+[2026-09-08 19:40:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 19:40:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 19:45:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 19:45:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 19:45:01] [INFO] [PID 23764] ========================================
+[2026-09-08 19:45:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 19:45:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 19:50:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 19:50:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 19:50:01] [INFO] [PID 23764] ========================================
+[2026-09-08 19:50:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 19:50:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 19:55:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 19:55:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 19:55:01] [INFO] [PID 23764] ========================================
+[2026-09-08 19:55:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 19:55:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 20:00:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 20:00:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 20:00:01] [INFO] [PID 23764] ========================================
+[2026-09-08 20:00:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 20:00:01] [INFO] [PID 23764] Encontrados 1 candidatura(s) de candidatos em análise
+[2026-09-08 20:00:01] [INFO] [PID 23764] Processando candidatura #41 (Candidato: waesxrdtcfyvgbuhnijokwasrdctfvygbhunjimko, Vaga: dev front end)
+[08-Sep-2026 20:00:01 Europe/Berlin] 📋 [CRON] Iniciando análise da candidatura #41
+[08-Sep-2026 20:00:01 Europe/Berlin] 🤖 [CRON] Enviando para análise com Gemini...
+[08-Sep-2026 20:00:01 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[08-Sep-2026 20:00:31 Europe/Berlin] ⏳ HTTP 503 - Quota ou sobrecarga. Mensagem: This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try
+[08-Sep-2026 20:00:31 Europe/Berlin] ⏳ Aguardando 4s antes de retry...
+[08-Sep-2026 20:00:35 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 2/3)
+[08-Sep-2026 20:00:57 Europe/Berlin] ✓ Gemini API sucesso com modelo gemini-3.6-flash
+[08-Sep-2026 20:00:57 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[08-Sep-2026 20:01:00 Europe/Berlin] ⏳ HTTP 503 - Quota ou sobrecarga. Mensagem: This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try
+[08-Sep-2026 20:01:00 Europe/Berlin] ⏳ Aguardando 4s antes de retry...
+[08-Sep-2026 20:01:04 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 2/3)
+[08-Sep-2026 20:01:33 Europe/Berlin] ⏳ HTTP 503 - Quota ou sobrecarga. Mensagem: This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try
+[08-Sep-2026 20:01:33 Europe/Berlin] ⏳ Aguardando 8s antes de retry...
+[08-Sep-2026 20:01:41 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 3/3)
+[08-Sep-2026 20:02:04 Europe/Berlin] PHP Fatal error:  Maximum execution time of 120 seconds exceeded in C:\xampp\htdocs\TCC-labware-main\gemini_service.php on line 145
+[2026-09-08 20:02:04] [FATAL] [PID 23764] Erro fatal [1]: Maximum execution time of 120 seconds exceeded em C:\xampp\htdocs\TCC-labware-main\gemini_service.php:145
+[2026-09-08 20:05:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 20:05:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 20:05:01] [INFO] [PID 23764] ========================================
+[2026-09-08 20:05:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 20:05:01] [INFO] [PID 23764] Encontrados 1 candidatura(s) de candidatos em análise
+[2026-09-08 20:05:01] [INFO] [PID 23764] Processando candidatura #41 (Candidato: waesxrdtcfyvgbuhnijokwasrdctfvygbhunjimko, Vaga: dev front end)
+[08-Sep-2026 20:05:01 Europe/Berlin] 📋 [CRON] Iniciando análise da candidatura #41
+[08-Sep-2026 20:05:01 Europe/Berlin] 🤖 [CRON] Enviando para análise com Gemini...
+[08-Sep-2026 20:05:01 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[08-Sep-2026 20:05:26 Europe/Berlin] ✓ Gemini API sucesso com modelo gemini-3.6-flash
+[08-Sep-2026 20:05:26 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[08-Sep-2026 20:05:34 Europe/Berlin] ✓ Gemini API sucesso com modelo gemini-3.6-flash
+[08-Sep-2026 20:05:34 Europe/Berlin] ✅ Status da candidatura 41 atualizado para: Análise Completa
+[08-Sep-2026 20:05:34 Europe/Berlin] ✅ [CRON] Candidatura #41 analisada com sucesso! Assertividade: 5.00%
+[2026-09-08 20:05:34] [INFO] [PID 23764] ========================================
+[2026-09-08 20:05:34] [INFO] [PID 23764] Processamento concluído!
+[2026-09-08 20:05:34] [INFO] [PID 23764] Total processadas: 1
+[2026-09-08 20:05:34] [INFO] [PID 23764] Sucesso: 1
+[2026-09-08 20:05:34] [INFO] [PID 23764] Erros: 0
+[2026-09-08 20:05:34] [INFO] [PID 23764] ========================================
+[2026-09-08 20:05:34] [INFO] [PID 23764] Status de 1 candidato(s) processado(s) foi resetado para 'Pendente'.
+[2026-09-08 20:10:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 20:10:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 20:10:01] [INFO] [PID 23764] ========================================
+[2026-09-08 20:10:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 20:10:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 20:15:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 20:15:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 20:15:01] [INFO] [PID 23764] ========================================
+[2026-09-08 20:15:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 20:15:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 20:20:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 20:20:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 20:20:01] [INFO] [PID 23764] ========================================
+[2026-09-08 20:20:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 20:20:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 20:25:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 20:25:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 20:25:01] [INFO] [PID 23764] ========================================
+[2026-09-08 20:25:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 20:25:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 20:30:01] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 20:30:01] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 20:30:01] [INFO] [PID 23764] ========================================
+[2026-09-08 20:30:01] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 20:30:01] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-08 20:35:02] [INFO] [PID 23764] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-08 20:35:02] [INFO] [PID 23764] Autenticação validada. Iniciando processamento.
+[2026-09-08 20:35:02] [INFO] [PID 23764] ========================================
+[2026-09-08 20:35:02] [INFO] [PID 23764] Iniciando processamento de análises
+[2026-09-08 20:35:02] [INFO] [PID 23764] Nenhum candidato em análise no momento

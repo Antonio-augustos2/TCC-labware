@@ -12,10 +12,24 @@ function escapeHtml(text) {
   return text.replace(/[&<>"']/g, m => map[m]);
 }
 
+function formatJobDescription(description) {
+  const safeDescription = escapeHtml(description || '');
+  return safeDescription
+    .replace(/\*\*(Descrição do trabalho|Responsabilidades|Requisitos Desejáveis|Remuneração e Benefícios|Informações Adicionais)\*\*/g, '<strong class="job-description-heading">$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+
+function getPrimaryJobDescription(description) {
+  const text = String(description || '');
+  const structuredMatch = text.match(/\*\*Descrição do trabalho\*\*\s*([\s\S]*?)(?=\n\s*\*\*(?:Responsabilidades|Requisitos Desejáveis|Remuneração e Benefícios|Informações Adicionais)\*\*|$)/i);
+  return structuredMatch ? structuredMatch[1].trim() : text;
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   console.log('DOM pronto!');
 
   initThemeToggle();
+  initTestimonialsCarousel();
 
   // Funcionalidade de upload de arquivo
   const fileInput = document.getElementById('anexoDocumento');
@@ -116,6 +130,35 @@ document.addEventListener('DOMContentLoaded', function () {
   initZoomSections();
 });
 
+function initTestimonialsCarousel() {
+  const carousel = document.getElementById('testimonial-carousel');
+  const indicators = document.getElementById('testimonial-indicators');
+  const slides = carousel ? Array.from(carousel.querySelectorAll('.testimonial-slide')) : [];
+  if (!carousel || !indicators || slides.length === 0) return;
+
+  let currentSlide = 0;
+  slides.forEach((slide, index) => {
+    const indicator = document.createElement('button');
+    indicator.type = 'button';
+    indicator.className = 'indicator' + (index === 0 ? ' active' : '');
+    indicator.setAttribute('aria-label', `Mostrar feedback ${index + 1}`);
+    indicator.addEventListener('click', () => showTestimonial(index));
+    indicators.appendChild(indicator);
+  });
+
+  const showTestimonial = (index) => {
+    currentSlide = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => slide.classList.toggle('active', slideIndex === currentSlide));
+    indicators.querySelectorAll('.indicator').forEach((indicator, indicatorIndex) => {
+      indicator.classList.toggle('active', indicatorIndex === currentSlide);
+    });
+  };
+
+  document.querySelector('.testimonial-prev')?.addEventListener('click', () => showTestimonial(currentSlide - 1));
+  document.querySelector('.testimonial-next')?.addEventListener('click', () => showTestimonial(currentSlide + 1));
+  showTestimonial(0);
+}
+
 function initZoomSections() {
   const zoomSections = document.querySelectorAll('section');
 
@@ -204,10 +247,26 @@ function renderJobs(jobs) {
     jobSlide.className = 'carousel-slide' + (index === 0 ? ' active' : '');
     jobSlide.innerHTML = `
       <div class="job-card-carousel">
-        <h3>${escapeHtml(job.title)}</h3>
-        <span class="job-tag">${escapeHtml(job.type)}</span>
-        <div class="job-description-block">${escapeHtml(job.description)}</div>
-        <button type="button" class="btn btn-apply" data-job-id="${job.id}">Candidatar-se</button>
+        <div class="job-card-summary">
+          <h3>${escapeHtml(job.title)}</h3>
+          <span class="job-tag">${escapeHtml(job.type)}</span>
+          <p class="job-location">Local: ${escapeHtml(job.location || 'Não informado')}</p>
+          <div class="job-description-block">
+            <strong class="job-description-heading">Descrição do trabalho</strong>
+            <span class="job-description-content">${formatJobDescription(getPrimaryJobDescription(job.description))}</span>
+          </div>
+          <button type="button" class="btn btn-more" data-job-id="${job.id}">Saiba mais</button>
+        </div>
+        <div class="job-card-full hidden">
+          <h3>${escapeHtml(job.title)}</h3>
+          <span class="job-tag">${escapeHtml(job.type)}</span>
+          <p class="job-location">Local: ${escapeHtml(job.location || 'Não informado')}</p>
+          <div class="job-description-block">${formatJobDescription(job.description)}</div>
+          <div class="job-card-actions">
+            <button type="button" class="btn btn-apply" data-job-id="${job.id}">Candidatar-se</button>
+            <button type="button" class="btn btn-outline btn-back-summary">Voltar</button>
+          </div>
+        </div>
       </div>
     `;
     
@@ -219,11 +278,49 @@ function renderJobs(jobs) {
   // Criar indicadores
   createCarouselIndicators(jobs.length);
 
-  // Adicionar event listeners aos botões de candidatar-se
+  // Configurar os estados resumido/completo e os botões de candidatura
+  setupJobDetailsButtons();
   setupApplyButtons();
   
   // Configurar navegação do carrosel
   setupCarouselNavigation(jobs.length);
+}
+
+function setupJobDetailsButtons() {
+  document.querySelectorAll('.btn-more').forEach(button => {
+    button.addEventListener('click', function () {
+      const card = this.closest('.job-card-carousel');
+      if (!card) return;
+
+      const jobId = this.getAttribute('data-job-id');
+      fetch('api_registrar_saiba_mais.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `job_id=${encodeURIComponent(jobId)}`
+      }).catch(error => console.error('Não foi possível registrar o clique:', error));
+
+      card.querySelector('.job-card-summary')?.classList.add('hidden');
+      card.querySelector('.job-card-full')?.classList.remove('hidden');
+    });
+  });
+
+  document.querySelectorAll('.btn-back-summary').forEach(button => {
+    button.addEventListener('click', function () {
+      const card = this.closest('.job-card-carousel');
+      if (!card) return;
+
+      card.querySelector('.job-card-full')?.classList.add('hidden');
+      card.querySelector('.job-card-summary')?.classList.remove('hidden');
+
+      // Reposiciona a tela no início do card enquanto ele volta ao resumo.
+      const headerOffset = 96;
+      const cardTop = card.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({
+        top: Math.max(0, cardTop),
+        behavior: 'smooth'
+      });
+    });
+  });
 }
 
 function createCarouselIndicators(total) {
@@ -283,6 +380,11 @@ function populateJobSelect(jobs) {
   
   if (!vagaSelect) return;
 
+  // Preservar a vaga escolhida quando as opções forem recarregadas.
+  // Isso evita que o select volte para a opção inicial ao anexar um currículo
+  // ou quando a página dispara o recarregamento das vagas.
+  const selectedJobId = vagaSelect.value;
+
   // Limpar opções existentes (mantendo a primeira)
   while (vagaSelect.options.length > 1) {
     vagaSelect.remove(1);
@@ -295,6 +397,10 @@ function populateJobSelect(jobs) {
     option.textContent = job.title;
     vagaSelect.appendChild(option);
   });
+
+  if (selectedJobId && jobs.some(job => String(job.id) === String(selectedJobId))) {
+    vagaSelect.value = selectedJobId;
+  }
 }
 
 function setupApplyButtons() {

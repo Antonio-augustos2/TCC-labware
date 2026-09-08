@@ -17,7 +17,7 @@
   <!-- HEADER -->
   <header>
     <div class="container header-content">
-      <a href="#home"><div class="logo">Lab<span>Ware</span></div></a>
+      <a href="index.php#home"><div class="logo">Lab<span>Ware</span></div></a>
       <nav>
         <?php 
           // Determina as links de navegação baseado no arquivo atual

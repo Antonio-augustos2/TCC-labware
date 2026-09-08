@@ -159,6 +159,23 @@
       color: #2563eb;
     }
 
+    /* Ações do header: tamanho consistente em todas as páginas */
+    .header-content nav > .btn,
+    .header-content nav > .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      min-width: 150px;
+      height: 54px;
+      min-height: 54px;
+      padding: 0 1rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
     /* HERO */
     .hero {
       padding: 5rem 0 4rem;
@@ -300,6 +317,176 @@
       margin-top: 2rem;
     }
 
+    .testimonial-carousel-container {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .testimonial-carousel-wrapper {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .testimonial-carousel {
+      position: relative;
+      min-height: 230px;
+    }
+
+    .testimonial-slide {
+      display: none;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .testimonial-slide.active {
+      display: block;
+    }
+
+    .testimonial-slide .testimonial-card {
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .testimonial-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .testimonial-indicators .indicator {
+      border: 0;
+      padding: 0;
+    }
+
+    .feedback-admin-grid {
+      margin-top: 1.5rem;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1.2rem;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .feedback-admin-list {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .feedback-admin-item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: #f8fafc;
+    }
+
+    .feedback-admin-item strong,
+    .feedback-admin-item span {
+      display: block;
+    }
+
+    .feedback-admin-item strong {
+      color: #0f172a;
+    }
+
+    .feedback-admin-item span {
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+
+    .feedback-admin-item p {
+      margin: 0.65rem 0 0;
+      color: #475569;
+      white-space: pre-wrap;
+    }
+
+    .feedback-admin-item .action-button {
+      flex: 0 0 42px;
+      width: 42px;
+      min-width: 42px;
+      height: 42px;
+      padding: 0;
+    }
+
+    .feedback-submit-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      width: 100%;
+      min-height: 48px;
+      margin-top: 0.25rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(37, 99, 235, 0.16);
+    }
+
+    .feedback-submit-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.24);
+    }
+
+    .feedback-form-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .feedback-form-actions .feedback-submit-button {
+      flex: 1;
+    }
+
+    .feedback-cancel-button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .feedback-item-actions {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 0.5rem;
+    }
+
+    .feedback-edit-button,
+    .feedback-delete-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 42px;
+      width: 42px;
+      min-width: 42px;
+      height: 42px;
+      padding: 0;
+      border-radius: 10px;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .feedback-edit-button:hover,
+    .feedback-delete-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .feedback-delete-button {
+      color: #b91c1c;
+    }
+
     .testimonial-card {
       background: white;
       padding: 2.5rem;
@@ -337,6 +524,10 @@
 
     .testimonial-highlight .testimonial-author {
       color: white;
+    }
+
+    .testimonial-highlight .testimonial-role {
+      color: #dbeafe;
     }
 
     /* Carreira */
@@ -454,6 +645,46 @@
       color: #1e293b;
     }
 
+    .job-card-summary,
+    .job-card-full {
+      width: 100%;
+    }
+
+    .job-card-summary {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 340px;
+    }
+
+    .job-card-full {
+      animation: slideIn 0.25s ease-out;
+    }
+
+    .job-card-full .job-description-block,
+    .job-card-summary .job-description-block {
+      flex: 1;
+    }
+
+    .job-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .job-card-actions .btn {
+      flex: 1;
+      min-width: 150px;
+      text-align: center;
+    }
+
+    .btn-more {
+      align-self: flex-start;
+      margin-top: 1rem;
+    }
+
     .job-card-carousel .job-tag {
       display: inline-block;
       background: #dbeafe;
@@ -488,6 +719,59 @@
       white-space: pre-wrap;
       overflow-wrap: anywhere;
       word-break: break-word;
+    }
+
+    .job-description-heading {
+      display: block;
+      margin: 1.1rem 0 0.45rem;
+      color: #1e3a8a;
+      font-size: 1rem;
+    }
+
+    .job-description-heading:first-child {
+      margin-top: 0;
+    }
+
+    .job-card-summary .job-description-block {
+      padding: 1.1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .job-card-summary .job-description-heading {
+      margin: 0 0 0.7rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid #dbeafe;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
+    .job-description-content {
+      display: block;
+      white-space: normal;
+    }
+
+    body.dark-mode .job-description-heading {
+      color: #bfdbfe;
+    }
+
+    .admin-form textarea {
+      width: 100%;
+      min-height: 110px;
+      resize: vertical;
+      padding: 0.95rem 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      color: #0f172a;
+      background: #fff;
+      font: inherit;
+      line-height: 1.55;
+    }
+
+    .admin-form textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
     }
 
     .carousel-btn {
@@ -788,6 +1072,106 @@
       color: #fff;
     }
 
+    .access-summary {
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      background: #f8fafc;
+    }
+
+    .access-summary-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .access-summary-header h3 {
+      margin: 0.35rem 0 0;
+    }
+
+    .access-filter-form {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .access-filter-form label {
+      color: #475569;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .access-filter-form select {
+      min-width: 220px;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: #fff;
+      color: #1e293b;
+      font: inherit;
+    }
+
+    .access-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .access-counter {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      min-width: 0;
+      min-height: 76px;
+      padding: 1rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      background: #fff;
+    }
+
+    .access-counter-total {
+      border-color: #93c5fd;
+      background: #eff6ff;
+    }
+
+    .access-counter-icon {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      flex: 0 0 38px;
+      border-radius: 11px;
+      background: #dbeafe;
+      color: #2563eb;
+    }
+
+    .access-counter strong,
+    .access-counter span:last-child {
+      display: block;
+    }
+
+    .access-counter > div {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .access-counter strong {
+      color: #0f172a;
+      font-size: 1.35rem;
+      line-height: 1.1;
+    }
+
+    .access-counter div span {
+      color: #64748b;
+      font-size: 0.8rem;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
     .status-badge {
       display: inline-flex;
       align-items: center;
@@ -887,8 +1271,32 @@
     }
 
     .actions-row a {
-      margin-right: 0.5rem;
+      margin: 0;
+    }
+
+    .actions-row {
+      width: 120px;
+      min-width: 120px;
+      vertical-align: middle !important;
+    }
+
+    .actions-row .action-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 100%;
+      height: 40px;
+      padding: 0.45rem;
       margin-bottom: 0.5rem;
+      border-radius: 10px;
+      font-size: 1.15rem;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .actions-row .action-button:last-child {
+      margin-bottom: 0;
     }
 
     .alert {
@@ -966,21 +1374,100 @@
       margin-right: 0.5rem;
     }
 
+    .access-card h3 {
+      margin-bottom: 1rem;
+    }
+
+    .access-card > p {
+      color: #475569;
+    }
+
     .analysis-page {
       padding: 4rem 0;
     }
 
     .analysis-header {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    .analysis-header h2,
-    .analysis-header p {
-      text-align: left;
+    .analysis-eyebrow,
+    .card-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
+
+    .analysis-eyebrow {
+      color: #2563eb;
+    }
+
+    .analysis-header h2 {
+      margin: 0.55rem 0 0.5rem;
+      text-align: left;
+      font-size: 2.4rem;
+    }
+
+    .analysis-header p {
+      max-width: 760px;
+      margin: 0;
+      color: #475569;
+      font-size: 1.05rem;
+    }
+
+    .analysis-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .summary-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.35rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .summary-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      font-size: 1.1rem;
+    }
+
+    .summary-card strong,
+    .summary-card span:last-child {
+      display: block;
+    }
+
+    .summary-card strong {
+      color: #0f172a;
+      font-size: 1.65rem;
+      line-height: 1.1;
+    }
+
+    .summary-card div span {
+      margin-top: 0.2rem;
+      color: #64748b;
+      font-size: 0.84rem;
+    }
+
+    .summary-total .summary-icon { background: #dbeafe; color: #1d4ed8; }
+    .summary-ready .summary-icon { background: #dcfce7; color: #15803d; }
+    .summary-pending .summary-icon { background: #fef3c7; color: #b45309; }
 
     .analysis-card {
-      overflow-x: auto;
+      overflow: hidden;
     }
 
     /* Toolbar de análise com botão de reprocessamento */
@@ -996,6 +1483,17 @@
     .analysis-header-toolbar h3 {
       margin-bottom: 0;
       flex: 0 0 auto;
+    }
+
+    .card-eyebrow {
+      color: #2563eb;
+      letter-spacing: 0.08em;
+    }
+
+    .analysis-table-wrapper {
+      overflow-x: auto;
+      margin: 0 -0.35rem;
+      padding: 0 0.35rem 0.35rem;
     }
 
     .toolbar-actions {
@@ -1058,6 +1556,18 @@
       vertical-align: top;
     }
 
+    .analysis-table tbody tr {
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .analysis-table tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    .analysis-table tbody tr.row-reprocessavel:hover {
+      background: #dcfce7;
+    }
+
     .candidate-name,
     .job-name {
       display: block;
@@ -1086,7 +1596,11 @@
     .feedback-text {
       min-width: 240px;
       max-width: 420px;
-      white-space: pre-wrap;
+      white-space: normal;
+      text-align: justify;
+      text-justify: inter-word;
+      overflow-wrap: anywhere;
+      line-height: 1.65;
     }
 
     .empty-state {
@@ -1240,6 +1754,51 @@
         padding: 1.8rem;
       }
 
+      .analysis-page {
+        padding-top: 2.5rem;
+      }
+
+      .analysis-header h2 {
+        font-size: 2rem;
+      }
+
+      .analysis-header p {
+        font-size: 0.95rem;
+      }
+
+      .access-summary-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .access-filter-form {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .access-filter-form select {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .analysis-summary {
+        grid-template-columns: 1fr;
+      }
+
+      .analysis-header-toolbar {
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .toolbar-actions,
+      .toolbar-actions .btn {
+        width: 100%;
+      }
+
+      .toolbar-actions .btn {
+        text-align: center;
+      }
+
       .carousel-container {
         gap: 0.5rem;
       }
@@ -1257,6 +1816,55 @@
 
       .job-card-carousel h3 {
         font-size: 1.3rem;
+      }
+
+      .job-card-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .job-card-actions .btn {
+        width: 100%;
+      }
+
+      .feedback-admin-item {
+        gap: 0.75rem;
+      }
+
+      .feedback-delete-button {
+        flex: 0 0 40px;
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+      }
+
+      .feedback-edit-button {
+        flex: 0 0 40px;
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+      }
+
+      .feedback-form-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .feedback-cancel-button {
+        width: 100%;
+      }
+
+      .testimonial-carousel-container {
+        gap: 0.5rem;
+      }
+
+      .testimonial-carousel {
+        min-height: 300px;
+      }
+
+      .testimonial-slide .testimonial-card {
+        min-height: 300px;
+        padding: 2rem 1.4rem;
       }
     }
 
@@ -1454,6 +2062,100 @@
       background: #020817;
     }
 
+    body.dark-mode .access-summary {
+      background: #111827;
+      border-color: rgba(148, 163, 184, 0.18);
+      box-shadow: 0 8px 24px rgba(2, 8, 23, 0.22);
+    }
+
+    body.dark-mode .access-summary-header h3 {
+      color: #f8fafc;
+    }
+
+    body.dark-mode .access-filter-form label {
+      color: #cbd5e1;
+    }
+
+    body.dark-mode .access-filter-form select {
+      background: #0f172a;
+      border-color: #334155;
+      color: #f8fafc;
+    }
+
+    body.dark-mode .access-counter {
+      background: #0f172a;
+      border-color: rgba(148, 163, 184, 0.18);
+    }
+
+    body.dark-mode .access-counter-total {
+      background: rgba(37, 99, 235, 0.16);
+      border-color: rgba(96, 165, 250, 0.4);
+    }
+
+    body.dark-mode .access-counter-icon {
+      background: rgba(96, 165, 250, 0.16);
+      color: #93c5fd;
+    }
+
+    body.dark-mode .access-counter strong {
+      color: #f8fafc;
+    }
+
+    body.dark-mode .access-counter div span {
+      color: #94a3b8;
+    }
+
+    /* Mini cards de acessos: reforço do dark mode no painel administrativo */
+    body.dark-mode .admin-page .access-summary .access-counter {
+      background-color: #0f172a;
+      border-color: #334155;
+      color: #e2e8f0;
+    }
+
+    body.dark-mode .admin-page .access-summary .access-counter.access-counter-total {
+      background-color: #172554;
+      border-color: #3b82f6;
+    }
+
+    body.dark-mode .admin-page .access-summary .access-counter strong {
+      color: #f8fafc;
+    }
+
+    body.dark-mode .admin-page .access-summary .access-counter div span {
+      color: #cbd5e1;
+    }
+
+    body.dark-mode .admin-page .access-summary .access-counter .access-counter-icon {
+      background-color: #1e3a8a;
+      color: #bfdbfe;
+    }
+
+    body.dark-mode .summary-card {
+      background: #0f172a;
+      border-color: rgba(148, 163, 184, 0.18);
+      box-shadow: 0 8px 24px rgba(2, 8, 23, 0.28);
+    }
+
+    body.dark-mode .summary-card strong {
+      color: #f8fafc;
+    }
+
+    body.dark-mode .summary-card div span {
+      color: #94a3b8;
+    }
+
+    body.dark-mode .card-eyebrow {
+      color: #93c5fd;
+    }
+
+    body.dark-mode .analysis-header p {
+      color: #cbd5e1;
+    }
+
+    body.dark-mode .analysis-table tbody tr:hover {
+      background: #111827;
+    }
+
     body.dark-mode .admin-header h2,
     body.dark-mode .admin-header p {
       color: #f8fafc;
@@ -1496,6 +2198,37 @@
 
     body.dark-mode .admin-card p {
       color: #dfe7f3;
+    }
+
+    body.dark-mode .checkbox-label {
+      color: #dfe7f3;
+    }
+
+    body.dark-mode .feedback-admin-item {
+      background: #111827;
+      border-color: rgba(148, 163, 184, 0.18);
+    }
+
+    body.dark-mode .feedback-admin-item strong {
+      color: #f8fafc;
+    }
+
+    body.dark-mode .feedback-admin-item span,
+    body.dark-mode .feedback-admin-item p {
+      color: #cbd5e1;
+    }
+
+    body.dark-mode .feedback-submit-button {
+      box-shadow: 0 8px 18px rgba(2, 8, 23, 0.35);
+    }
+
+    body.dark-mode .feedback-delete-button {
+      color: #fecaca;
+    }
+
+    body.dark-mode .feedback-edit-button {
+      border-color: #60a5fa;
+      color: #bfdbfe;
     }
 
     /* Dark mode para análise e reprocessamento */
@@ -1559,12 +2292,22 @@
     }
 
     body.dark-mode .access-list li {
+      background: #111827;
       color: #dfe7f3;
+      border: 1px solid rgba(148, 163, 184, 0.16);
       border-bottom: 1px solid rgba(148, 163, 184, 0.1);
     }
 
     body.dark-mode .access-list li strong {
       color: #f8fafc;
+    }
+
+    body.dark-mode .access-card h3 {
+      color: #f8fafc;
+    }
+
+    body.dark-mode .access-card > p {
+      color: #cbd5e1;
     }
 
     body.dark-mode .candidate-name,

@@ -6,6 +6,93 @@
 
 require_once 'config.php';
 
+function ensureFeedbackTable($conn) {
+    $sql = "CREATE TABLE IF NOT EXISTS feedback (
+        id_feedback INT AUTO_INCREMENT PRIMARY KEY,
+        autor VARCHAR(150) NOT NULL,
+        cargo VARCHAR(150) NOT NULL,
+        mensagem TEXT NOT NULL,
+        destaque TINYINT(1) NOT NULL DEFAULT 0,
+        ativo TINYINT(1) NOT NULL DEFAULT 1,
+        criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
+
+    return $conn->query($sql);
+}
+
+function getFeedbacksPublicos($conn) {
+    ensureFeedbackTable($conn);
+    $result = $conn->query("SELECT id_feedback, autor, cargo, mensagem, destaque FROM feedback WHERE ativo = 1 ORDER BY criado_em DESC, id_feedback DESC");
+    if (!$result) {
+        return [];
+    }
+
+    $feedbacks = [];
+    while ($row = $result->fetch_assoc()) {
+        $feedbacks[] = [
+            'id' => (int) $row['id_feedback'],
+            'author' => $row['autor'],
+            'role' => $row['cargo'],
+            'message' => $row['mensagem'],
+            'highlight' => (bool) $row['destaque']
+        ];
+    }
+
+    return $feedbacks;
+}
+
+function getFeedbacksAdmin($conn) {
+    ensureFeedbackTable($conn);
+    $result = $conn->query("SELECT id_feedback, autor, cargo, mensagem, destaque, ativo, criado_em FROM feedback ORDER BY criado_em DESC, id_feedback DESC");
+    if (!$result) {
+        return [];
+    }
+
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+function getFeedbackById($conn, $id) {
+    ensureFeedbackTable($conn);
+    $id = (int) $id;
+    $result = $conn->query("SELECT id_feedback, autor, cargo, mensagem, destaque FROM feedback WHERE id_feedback = $id LIMIT 1");
+    return $result ? $result->fetch_assoc() : null;
+}
+
+function createFeedback($conn, $autor, $cargo, $mensagem, $destaque = false) {
+    ensureFeedbackTable($conn);
+    $stmt = $conn->prepare('INSERT INTO feedback (autor, cargo, mensagem, destaque) VALUES (?, ?, ?, ?)');
+    if (!$stmt) {
+        return false;
+    }
+
+    $destaque = $destaque ? 1 : 0;
+    $stmt->bind_param('sssi', $autor, $cargo, $mensagem, $destaque);
+    $ok = $stmt->execute();
+    $stmt->close();
+    return $ok;
+}
+
+function updateFeedback($conn, $id, $autor, $cargo, $mensagem, $destaque = false) {
+    ensureFeedbackTable($conn);
+    $stmt = $conn->prepare('UPDATE feedback SET autor = ?, cargo = ?, mensagem = ?, destaque = ? WHERE id_feedback = ?');
+    if (!$stmt) {
+        return false;
+    }
+
+    $destaque = $destaque ? 1 : 0;
+    $id = (int) $id;
+    $stmt->bind_param('sssii', $autor, $cargo, $mensagem, $destaque, $id);
+    $ok = $stmt->execute();
+    $stmt->close();
+    return $ok;
+}
+
+function deleteFeedback($conn, $id) {
+    ensureFeedbackTable($conn);
+    $id = (int) $id;
+    return $conn->query("DELETE FROM feedback WHERE id_feedback = $id");
+}
+
 /**
  * Garantir colunas de tipo e localidade na tabela vaga.
  */
@@ -269,15 +356,37 @@ function registerAccess($conn, $job_id, $job_title) {
         id_acesso INT AUTO_INCREMENT PRIMARY KEY,
         id_vaga INT NOT NULL,
         titulo_vaga VARCHAR(150),
+        tipo_acesso VARCHAR(30) NOT NULL DEFAULT 'pagina_vaga',
         data_acesso TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (id_vaga) REFERENCES vaga(id_vaga)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
     
     $conn->query($sql);
+    $conn->query("ALTER TABLE acesso ADD COLUMN IF NOT EXISTS tipo_acesso VARCHAR(30) NOT NULL DEFAULT 'pagina_vaga'");
     
     // Registrar o acesso
-    $sql = "INSERT INTO acesso (id_vaga, titulo_vaga) VALUES ($job_id, '$job_title')";
+    $sql = "INSERT INTO acesso (id_vaga, titulo_vaga, tipo_acesso) VALUES ($job_id, '$job_title', 'pagina_vaga')";
     return $conn->query($sql);
+}
+
+/**
+ * Registrar exclusivamente um clique no botão "Saiba mais".
+ */
+function registerSaibaMaisClick($conn, $job_id, $job_title) {
+    $job_id = (int) $job_id;
+    $job_title = $conn->real_escape_string($job_title);
+    $sql = "CREATE TABLE IF NOT EXISTS acesso (
+        id_acesso INT AUTO_INCREMENT PRIMARY KEY,
+        id_vaga INT NOT NULL,
+        titulo_vaga VARCHAR(150),
+        tipo_acesso VARCHAR(30) NOT NULL DEFAULT 'pagina_vaga',
+        data_acesso TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_vaga) REFERENCES vaga(id_vaga)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
+    $conn->query($sql);
+    $conn->query("ALTER TABLE acesso ADD COLUMN IF NOT EXISTS tipo_acesso VARCHAR(30) NOT NULL DEFAULT 'pagina_vaga'");
+
+    return $conn->query("INSERT INTO acesso (id_vaga, titulo_vaga, tipo_acesso) VALUES ($job_id, '$job_title', 'saiba_mais')");
 }
 
 /**
@@ -296,6 +405,7 @@ function getAccessLog($conn, $limit = 20) {
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
     
     $conn->query($sql);
+    $conn->query("ALTER TABLE acesso ADD COLUMN IF NOT EXISTS tipo_acesso VARCHAR(30) NOT NULL DEFAULT 'pagina_vaga'");
     
     $sql = "SELECT id_vaga, titulo_vaga, data_acesso FROM acesso ORDER BY data_acesso DESC LIMIT $limit";
     $result = $conn->query($sql);
@@ -314,6 +424,34 @@ function getAccessLog($conn, $limit = 20) {
     }
     
     return $accesses;
+}
+
+/**
+ * Obter quantidade de cliques em "Saiba mais" por vaga.
+ */
+function getAccessCounts($conn) {
+    $sql = "CREATE TABLE IF NOT EXISTS acesso (
+        id_acesso INT AUTO_INCREMENT PRIMARY KEY,
+        id_vaga INT NOT NULL,
+        titulo_vaga VARCHAR(150),
+        tipo_acesso VARCHAR(30) NOT NULL DEFAULT 'pagina_vaga',
+        data_acesso TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_vaga) REFERENCES vaga(id_vaga)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
+    $conn->query($sql);
+    $conn->query("ALTER TABLE acesso ADD COLUMN IF NOT EXISTS tipo_acesso VARCHAR(30) NOT NULL DEFAULT 'pagina_vaga'");
+
+    $result = $conn->query("SELECT id_vaga, COUNT(*) AS total FROM acesso WHERE tipo_acesso = 'saiba_mais' GROUP BY id_vaga");
+    if (!$result) {
+        return [];
+    }
+
+    $counts = [];
+    while ($row = $result->fetch_assoc()) {
+        $counts[(int) $row['id_vaga']] = (int) $row['total'];
+    }
+
+    return $counts;
 }
 
 /**
