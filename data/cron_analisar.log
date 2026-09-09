@@ -296,3 +296,177 @@
 [2026-09-08 20:35:02] [INFO] [PID 23764] ========================================
 [2026-09-08 20:35:02] [INFO] [PID 23764] Iniciando processamento de análises
 [2026-09-08 20:35:02] [INFO] [PID 23764] Nenhum candidato em análise no momento
+[2026-09-09 20:00:06] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:00:06] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:00:06] [INFO] [PID 2608] ========================================
+[2026-09-09 20:00:06] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:00:06] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 20:05:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:05:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:05:01] [INFO] [PID 2608] ========================================
+[2026-09-09 20:05:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:05:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 20:10:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:10:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:10:01] [INFO] [PID 2608] ========================================
+[2026-09-09 20:10:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:10:02] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 20:15:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:15:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:15:01] [INFO] [PID 2608] ========================================
+[2026-09-09 20:15:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:15:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 20:16:54] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:16:54] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:16:54] [INFO] [PID 2608] ========================================
+[2026-09-09 20:16:54] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:16:54] [INFO] [PID 2608] Encontrados 1 candidatura(s) de candidatos em análise
+[2026-09-09 20:16:54] [INFO] [PID 2608] Processando candidatura #42 (Candidato: Aureliano Higino Assis Pimentel Neto, Vaga: Analista de dados - pleno)
+[09-Sep-2026 20:16:54 Europe/Berlin] 📋 [CRON] Iniciando análise da candidatura #42
+[09-Sep-2026 20:16:54 Europe/Berlin] 🤖 [CRON] Enviando para análise com Gemini...
+[09-Sep-2026 20:16:54 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[09-Sep-2026 20:17:32 Europe/Berlin] ⏳ HTTP 503 - Quota ou sobrecarga. Mensagem: This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try
+[09-Sep-2026 20:17:32 Europe/Berlin] ⏳ Aguardando 4s antes de retry...
+[09-Sep-2026 20:17:36 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 2/3)
+[09-Sep-2026 20:18:00 Europe/Berlin] ✓ Gemini API sucesso com modelo gemini-3.6-flash
+[09-Sep-2026 20:18:00 Europe/Berlin] 🔄 Tentando modelo gemini-3.6-flash (tentativa 1/3)
+[09-Sep-2026 20:18:29 Europe/Berlin] ✓ Gemini API sucesso com modelo gemini-3.6-flash
+[09-Sep-2026 20:18:29 Europe/Berlin] ✅ Status da candidatura 42 atualizado para: Análise Completa
+[09-Sep-2026 20:18:29 Europe/Berlin] ✅ [CRON] Candidatura #42 analisada com sucesso! Assertividade: 100.00%
+[2026-09-09 20:18:29] [INFO] [PID 2608] ========================================
+[2026-09-09 20:18:29] [INFO] [PID 2608] Processamento concluído!
+[2026-09-09 20:18:29] [INFO] [PID 2608] Total processadas: 1
+[2026-09-09 20:18:29] [INFO] [PID 2608] Sucesso: 1
+[2026-09-09 20:18:29] [INFO] [PID 2608] Erros: 0
+[2026-09-09 20:18:29] [INFO] [PID 2608] ========================================
+[2026-09-09 20:18:29] [INFO] [PID 2608] Status de 1 candidato(s) processado(s) foi resetado para 'Pendente'.
+[2026-09-09 20:20:18] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:20:18] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:20:18] [INFO] [PID 2608] ========================================
+[2026-09-09 20:20:18] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:20:18] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 20:25:12] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:25:12] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:25:12] [INFO] [PID 2608] ========================================
+[2026-09-09 20:25:12] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:25:12] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 20:30:27] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:30:27] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:30:27] [INFO] [PID 2608] ========================================
+[2026-09-09 20:30:27] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:30:27] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 20:35:11] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:35:11] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:35:11] [INFO] [PID 2608] ========================================
+[2026-09-09 20:35:11] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:35:11] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 20:40:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:40:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:40:01] [INFO] [PID 2608] ========================================
+[2026-09-09 20:40:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:40:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 20:45:03] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:45:03] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:45:03] [INFO] [PID 2608] ========================================
+[2026-09-09 20:45:03] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:45:03] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 20:50:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:50:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:50:01] [INFO] [PID 2608] ========================================
+[2026-09-09 20:50:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:50:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 20:55:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 20:55:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 20:55:01] [INFO] [PID 2608] ========================================
+[2026-09-09 20:55:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 20:55:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:00:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:00:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:00:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:00:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:00:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:05:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:05:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:05:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:05:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:05:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:10:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:10:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:10:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:10:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:10:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:15:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:15:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:15:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:15:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:15:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:20:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:20:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:20:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:20:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:20:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:25:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:25:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:25:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:25:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:25:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:30:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:30:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:30:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:30:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:30:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:35:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:35:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:35:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:35:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:35:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:40:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:40:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:40:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:40:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:40:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:45:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:45:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:45:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:45:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:45:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:50:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:50:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:50:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:50:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:50:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 21:55:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 21:55:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 21:55:01] [INFO] [PID 2608] ========================================
+[2026-09-09 21:55:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 21:55:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 22:00:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 22:00:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 22:00:01] [INFO] [PID 2608] ========================================
+[2026-09-09 22:00:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 22:00:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 22:05:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 22:05:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 22:05:01] [INFO] [PID 2608] ========================================
+[2026-09-09 22:05:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 22:05:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 22:10:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 22:10:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 22:10:01] [INFO] [PID 2608] ========================================
+[2026-09-09 22:10:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 22:10:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 22:15:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 22:15:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 22:15:01] [INFO] [PID 2608] ========================================
+[2026-09-09 22:15:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 22:15:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 22:20:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 22:20:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 22:20:01] [INFO] [PID 2608] ========================================
+[2026-09-09 22:20:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 22:20:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-09 22:25:01] [INFO] [PID 2608] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[2026-09-09 22:25:01] [INFO] [PID 2608] Autenticação validada. Iniciando processamento.
+[2026-09-09 22:25:01] [INFO] [PID 2608] ========================================
+[2026-09-09 22:25:01] [INFO] [PID 2608] Iniciando processamento de análises
+[2026-09-09 22:25:01] [INFO] [PID 2608] Nenhum candidato em análise no momento

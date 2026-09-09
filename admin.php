@@ -225,6 +225,13 @@ if ($loggedIn) {
     $accessLog = getAccessLog($conn, 20);
     $accessCounts = getAccessCounts($conn);
     $feedbacksAdmin = getFeedbacksAdmin($conn);
+
+    // Ordenar vagas por número de acessos em ordem decrescente
+    usort($jobs, function($a, $b) use ($accessCounts) {
+        $aCount = (int) ($accessCounts[(int) $a['id']] ?? 0);
+        $bCount = (int) ($accessCounts[(int) $b['id']] ?? 0);
+        return $bCount - $aCount; // Decrescente: maior para menor
+    });
 }
 
 $editJobSections = getJobDescriptionSections($editJob['description'] ?? '');
