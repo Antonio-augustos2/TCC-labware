@@ -1,1 +1,9 @@
-{"success":true,"message":"Nenhum candidato em an\u00e1lise","processadas":0,"sucesso":0,"erros":0,"timestamp":"2026-09-09 22:25:01"}
+<br />
+<b>Warning</b>:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in <b>C:\xampp\htdocs\TCC-labware-main\config.php</b> on line <b>38</b><br />
+<br />
+<b>Fatal error</b>:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli-&gt;set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in <b>C:\xampp\htdocs\TCC-labware-main\config.php</b> on line <b>41</b><br />

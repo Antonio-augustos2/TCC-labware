@@ -470,3 +470,157 @@
 [2026-09-09 22:25:01] [INFO] [PID 2608] ========================================
 [2026-09-09 22:25:01] [INFO] [PID 2608] Iniciando processamento de análises
 [2026-09-09 22:25:01] [INFO] [PID 2608] Nenhum candidato em análise no momento
+[2026-09-10 23:25:03] [INFO] [PID 22996] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[10-Sep-2026 23:25:07 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in C:\xampp\htdocs\TCC-labware-main\config.php on line 38
+[10-Sep-2026 23:25:07 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\TCC-labware-main\config.php on line 41
+[2026-09-10 23:25:07] [FATAL] [PID 22996] Erro fatal [1]: Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown em C:\xampp\htdocs\TCC-labware-main\config.php:41
+[2026-09-10 23:45:01] [INFO] [PID 15652] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[10-Sep-2026 23:45:05 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in C:\xampp\htdocs\TCC-labware-main\config.php on line 38
+[10-Sep-2026 23:45:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\TCC-labware-main\config.php on line 41
+[2026-09-10 23:45:05] [FATAL] [PID 15652] Erro fatal [1]: Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown em C:\xampp\htdocs\TCC-labware-main\config.php:41
+[2026-09-10 23:50:01] [INFO] [PID 15652] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[10-Sep-2026 23:50:05 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in C:\xampp\htdocs\TCC-labware-main\config.php on line 38
+[10-Sep-2026 23:50:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\TCC-labware-main\config.php on line 41
+[2026-09-10 23:50:05] [FATAL] [PID 15652] Erro fatal [1]: Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown em C:\xampp\htdocs\TCC-labware-main\config.php:41
+[2026-09-10 23:55:02] [INFO] [PID 15652] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[10-Sep-2026 23:55:06 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in C:\xampp\htdocs\TCC-labware-main\config.php on line 38
+[10-Sep-2026 23:55:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\TCC-labware-main\config.php on line 41
+[2026-09-10 23:55:06] [FATAL] [PID 15652] Erro fatal [1]: Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown em C:\xampp\htdocs\TCC-labware-main\config.php:41
+[2026-09-11 00:00:01] [INFO] [PID 15652] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[11-Sep-2026 00:00:05 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in C:\xampp\htdocs\TCC-labware-main\config.php on line 38
+[11-Sep-2026 00:00:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\TCC-labware-main\config.php on line 41
+[2026-09-11 00:00:05] [FATAL] [PID 15652] Erro fatal [1]: Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown em C:\xampp\htdocs\TCC-labware-main\config.php:41
+[2026-09-11 00:05:01] [INFO] [PID 15652] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[11-Sep-2026 00:05:05 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in C:\xampp\htdocs\TCC-labware-main\config.php on line 38
+[11-Sep-2026 00:05:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\TCC-labware-main\config.php on line 41
+[2026-09-11 00:05:06] [FATAL] [PID 15652] Erro fatal [1]: Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown em C:\xampp\htdocs\TCC-labware-main\config.php:41
+[2026-09-11 00:29:56] [INFO] [PID 15652] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[11-Sep-2026 00:30:00 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in C:\xampp\htdocs\TCC-labware-main\config.php on line 38
+[11-Sep-2026 00:30:00 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\TCC-labware-main\config.php on line 41
+[2026-09-11 00:30:00] [FATAL] [PID 15652] Erro fatal [1]: Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown em C:\xampp\htdocs\TCC-labware-main\config.php:41
+[2026-09-11 00:30:01] [INFO] [PID 15652] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[11-Sep-2026 00:30:05 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in C:\xampp\htdocs\TCC-labware-main\config.php on line 38
+[11-Sep-2026 00:30:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\TCC-labware-main\config.php on line 41
+[2026-09-11 00:30:05] [FATAL] [PID 15652] Erro fatal [1]: Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown em C:\xampp\htdocs\TCC-labware-main\config.php:41
+[2026-09-11 00:35:01] [INFO] [PID 15652] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[11-Sep-2026 00:35:05 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in C:\xampp\htdocs\TCC-labware-main\config.php on line 38
+[11-Sep-2026 00:35:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\TCC-labware-main\config.php on line 41
+[2026-09-11 00:35:05] [FATAL] [PID 15652] Erro fatal [1]: Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown em C:\xampp\htdocs\TCC-labware-main\config.php:41
+[2026-09-11 00:40:01] [INFO] [PID 15652] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[11-Sep-2026 00:40:05 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in C:\xampp\htdocs\TCC-labware-main\config.php on line 38
+[11-Sep-2026 00:40:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\TCC-labware-main\config.php on line 41
+[2026-09-11 00:40:05] [FATAL] [PID 15652] Erro fatal [1]: Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown em C:\xampp\htdocs\TCC-labware-main\config.php:41
+[2026-09-11 00:45:01] [INFO] [PID 15652] Execução iniciada. Método: GET; Caminho: /TCC-labware-main/cron_analisar.php
+[11-Sep-2026 00:45:05 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/2002): Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente in C:\xampp\htdocs\TCC-labware-main\config.php on line 38
+[11-Sep-2026 00:45:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\TCC-labware-main\config.php on line 41
+[2026-09-11 00:45:05] [FATAL] [PID 15652] Erro fatal [1]: Uncaught Error: mysqli object is already closed in C:\xampp\htdocs\TCC-labware-main\config.php:41
+Stack trace:
+#0 C:\xampp\htdocs\TCC-labware-main\config.php(41): mysqli->set_charset('utf8mb4')
+#1 C:\xampp\htdocs\TCC-labware-main\cron_analisar.php(49): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown em C:\xampp\htdocs\TCC-labware-main\config.php:41
