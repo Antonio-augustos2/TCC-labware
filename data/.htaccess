@@ -1,0 +1,2 @@
+# Arquivos de dados e logs nunca devem ser acessados diretamente pelo navegador.
+Require all denied
