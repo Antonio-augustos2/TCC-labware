@@ -1,0 +1,20 @@
+{
+    "total_errors": 2,
+    "last_update": "2026-09-15 14:25:51",
+    "errors": [
+        {
+            "timestamp": "2026-09-15 13:56:14",
+            "type": "ASSERTIVITY_FAILED",
+            "message": "API Gemini falhou na análise de assertividade",
+            "file_name": "candidatura_1789473289_d8fe1e5a.pdf",
+            "job_title": null
+        },
+        {
+            "timestamp": "2026-09-15 14:25:51",
+            "type": "VALIDATION_FAILED",
+            "message": "API Gemini falhou na validação do currículo",
+            "file_name": "candidatura_1789475076_fea94c27.pdf",
+            "job_title": null
+        }
+    ]
+}

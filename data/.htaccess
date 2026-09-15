@@ -1,0 +1,11 @@
+# Arquivos de dados e logs nunca devem ser acessados diretamente pelo navegador.
+Require all denied
+
+# Permitir apenas os ativos públicos da landing page
+<Files "imagemHome.png">
+    Require all granted
+</Files>
+
+<Files "favicon.ico">
+    Require all granted
+</Files>
