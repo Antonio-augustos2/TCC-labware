@@ -1,17 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) : 'LabWare - Transforme a Gestão Laboratorial'; ?></title>
+  <title><?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) : 'LabWare - Transforme a GestÃ£o Laboratorial'; ?></title>
   
-  <!-- Fontes e ícones -->
+  <!-- Fontes e Ã­cones -->
   <link rel="shortcut icon" href="data/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="redesign.css?v=20261006-2">
 </head>
 <body>
   <!-- HEADER -->
@@ -20,7 +21,7 @@
       <a href="index.php#home"><div class="logo">Lab<span>Ware</span></div></a>
       <nav>
         <?php 
-          // Determina as links de navegação baseado no arquivo atual
+          // Determina as links de navegaÃ§Ã£o baseado no arquivo atual
           $currentPage = basename($_SERVER['PHP_SELF']);
           
           if ($currentPage === 'index.php' || $currentPage === 'index.html'): 
@@ -109,3 +110,4 @@
       </nav>
     </div>
   </header>
+

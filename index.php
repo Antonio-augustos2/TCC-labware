@@ -6,8 +6,36 @@ $feedbacksPublicos = getFeedbacksPublicos($conn);
 ?>
 <?php include 'header.php'; ?>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
+  <!-- Destaques editoriais e chamada de carreira -->
+  <section class="hero hero-editorial" id="home" aria-label="Destaques LabWare">
+    <div class="hero-atmosphere" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="container editorial-grid">
+      <div class="editorial-copy">
+        <span class="editorial-eyebrow"><i class="fas fa-sparkles"></i> CIÊNCIA, TECNOLOGIA E PESSOAS</span>
+        <p class="editorial-kicker">Seu talento pode mover o futuro.</p>
+        <h1>Ideias grandes começam com <em>gente curiosa.</em></h1>
+        <p class="editorial-intro">Na LabWare, pessoas e tecnologia transformam a rotina dos laboratórios. Traga sua curiosidade e construa o próximo capítulo com a gente.</p>
+        <div class="editorial-actions"><a class="btn" href="#vagas">Encontre sua oportunidade <i class="fas fa-arrow-right"></i></a><a class="editorial-secondary" href="#sobre">Conheça a LabWare <i class="fas fa-arrow-down"></i></a></div>
+        <div class="editorial-note"><span><i class="fas fa-flask"></i></span><p>Inovação com propósito<br><strong>e pessoas no centro</strong></p></div>
+      </div>
+      <div class="editorial-visual" data-tilt>
+        <img src="data/banner-carreira-labware.png" alt="Equipe colaborando em um ambiente de tecnologia e inovação">
+        <div class="visual-shade"></div>
+        <div class="visual-caption"><span><i class="fas fa-circle"></i> IDEIAS EM MOVIMENTO</span><h2>O futuro começa com pessoas.</h2><a href="#carreira">Descubra sua jornada <i class="fas fa-arrow-up-right-from-square"></i></a></div>
+        <span class="float-pill float-pill-ai"><i class="fas fa-brain"></i> Ciência + IA</span>
+        <span class="float-pill float-pill-team"><i class="fas fa-people-group"></i> Feito em equipe</span>
+      </div>
+    </div>
+    <div class="container headline-strip">
+      <div class="headline-heading"><span>EM PAUTA</span><i class="fas fa-arrow-right"></i></div>
+      <a class="headline-card active" href="https://www.labware.com/pt/lims/ml-ai" target="_blank" rel="noopener noreferrer"><span class="headline-number">01</span><span><small>TECNOLOGIA & CIÊNCIA</small><strong>Inteligência artificial está transformando os laboratórios</strong></span><i class="fas fa-arrow-up-right-from-square"></i></a>
+      <a class="headline-card" href="https://www.meioemensagem.com.br/videos/geracao-z-os-jovens-estao-remodelando-o-trabalho" target="_blank" rel="noopener noreferrer"><span class="headline-number">02</span><span><small>TRABALHO & CULTURA</small><strong>Geração Z está remodelando o jeito de trabalhar</strong></span><i class="fas fa-arrow-up-right-from-square"></i></a>
+      <div class="headline-controls"><button type="button" class="headline-prev" aria-label="Manchete anterior"><i class="fas fa-arrow-left"></i></button><button type="button" class="headline-next" aria-label="Próxima manchete"><i class="fas fa-arrow-right"></i></button></div>
+    </div>
+  </section>
+
+  <!-- HERO anterior -->
+  <section class="hero legacy-hero" id="legacy-home">
     <div class="container hero-grid">
       <div class="hero-text">
         <h1>Transforme a Gestão Laboratorial</h1>
@@ -22,7 +50,7 @@ $feedbacksPublicos = getFeedbacksPublicos($conn);
         <a href="#vagas" class="btn">Conheça nossas vagas</a>
       </div>
       <div class="hero-image">
-        <img src="data/imagemHome.png" alt="Imagem de destaque da LabWare" style="width: 100%; max-width: 520px; border-radius: 18px; object-fit: cover; display: block; margin: 0 auto;">
+        <img src="data/banner-carreira-labware.png" alt="Imagem de destaque da LabWare" style="width: 100%; max-width: 520px; border-radius: 18px; object-fit: cover; display: block; margin: 0 auto;">
       </div>
     </div>
   </section>

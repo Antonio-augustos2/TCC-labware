@@ -1,6 +1,6 @@
-console.log('script.js carregado!');
+﻿console.log('script.js carregado!');
 
-// Função auxiliar para escapar HTML
+// FunÃ§Ã£o auxiliar para escapar HTML
 function escapeHtml(text) {
   const map = {
     '&': '&amp;',
@@ -15,13 +15,13 @@ function escapeHtml(text) {
 function formatJobDescription(description) {
   const safeDescription = escapeHtml(description || '');
   return safeDescription
-    .replace(/\*\*(Descrição do trabalho|Responsabilidades|Requisitos Desejáveis|Remuneração e Benefícios|Informações Adicionais)\*\*/g, '<strong class="job-description-heading">$1</strong>')
+    .replace(/\*\*(DescriÃ§Ã£o do trabalho|Responsabilidades|Requisitos DesejÃ¡veis|RemuneraÃ§Ã£o e BenefÃ­cios|InformaÃ§Ãµes Adicionais)\*\*/g, '<strong class="job-description-heading">$1</strong>')
     .replace(/\n/g, '<br>');
 }
 
 function getPrimaryJobDescription(description) {
   const text = String(description || '');
-  const structuredMatch = text.match(/\*\*Descrição do trabalho\*\*\s*([\s\S]*?)(?=\n\s*\*\*(?:Responsabilidades|Requisitos Desejáveis|Remuneração e Benefícios|Informações Adicionais)\*\*|$)/i);
+  const structuredMatch = text.match(/\*\*DescriÃ§Ã£o do trabalho\*\*\s*([\s\S]*?)(?=\n\s*\*\*(?:Responsabilidades|Requisitos DesejÃ¡veis|RemuneraÃ§Ã£o e BenefÃ­cios|InformaÃ§Ãµes Adicionais)\*\*|$)/i);
   return structuredMatch ? structuredMatch[1].trim() : text;
 }
 
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
       fileInput.click();
     });
 
-    // Detectar quando um arquivo é selecionado
+    // Detectar quando um arquivo Ã© selecionado
     fileInput.addEventListener('change', function () {
       console.log('Change event disparado', this.files);
       
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('fileStatusContainer:', fileStatusContainer);
       
       if (!fileStatusContainer) {
-        console.error('fileUploadStatus container não encontrado!');
+        console.error('fileUploadStatus container nÃ£o encontrado!');
         return;
       }
 
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Mostrar status do arquivo
         fileStatusContainer.innerHTML = `
           <div class="file-attached">
-            <span class="file-icon">📄</span>
+            <span class="file-icon">ðŸ“„</span>
             <div class="file-info">
               <div class="file-name">${escapeHtml(fileName)}</div>
               <div class="file-size">${fileSize} KB</div>
@@ -91,20 +91,20 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   } else {
-    console.error('fileInput ou fileButton não encontrados!');
+    console.error('fileInput ou fileButton nÃ£o encontrados!');
   }
 
   // Carregar e renderizar as vagas dinamicamente
   loadJobs();
 
-  // Recarregar vagas quando a página fica visível (usuário volta à aba)
+  // Recarregar vagas quando a pÃ¡gina fica visÃ­vel (usuÃ¡rio volta Ã  aba)
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'visible') {
       loadJobs();
     }
   });
 
-  // Funcionalidade para os links "Enviar currículo" genérico
+  // Funcionalidade para os links "Enviar currÃ­culo" genÃ©rico
   const enviarCurriculoLinks = document.querySelectorAll('a[href="#formulario"]');
   enviarCurriculoLinks.forEach(link => {
     link.addEventListener('click', function (event) {
@@ -113,15 +113,15 @@ document.addEventListener('DOMContentLoaded', function () {
       const vagaSelect = document.getElementById('vaga');
       const formSection = document.getElementById('formulario');
       
-      // Limpar o select para candidatura genérica
+      // Limpar o select para candidatura genÃ©rica
       if (vagaSelect) {
         vagaSelect.value = '';
       }
       
-      // Mostrar o formulário
+      // Mostrar o formulÃ¡rio
       if (formSection) {
         formSection.classList.remove('hidden');
-        // Scroll suave para o formulário
+        // Scroll suave para o formulÃ¡rio
         formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
@@ -240,14 +240,14 @@ function renderJobs(jobs) {
   // Limpar o container
   carousel.innerHTML = '';
 
-  // Se não há vagas
+  // Se nÃ£o hÃ¡ vagas
   if (jobs.length === 0) {
     document.getElementById('carousel-indicators')?.replaceChildren();
     const previousButton = document.getElementById('carousel-prev');
     const nextButton = document.getElementById('carousel-next');
     if (previousButton) previousButton.disabled = true;
     if (nextButton) nextButton.disabled = true;
-    carousel.innerHTML = '<p style="text-align: center; grid-column: 1/-1;">Nenhuma vaga disponível no momento.</p>';
+    carousel.innerHTML = '<p style="text-align: center; grid-column: 1/-1;">Nenhuma vaga disponÃ­vel no momento.</p>';
     return;
   }
 
@@ -260,9 +260,9 @@ function renderJobs(jobs) {
         <div class="job-card-summary">
           <h3>${escapeHtml(job.title)}</h3>
           <span class="job-tag">${escapeHtml(job.type)}</span>
-          <p class="job-location">Local: ${escapeHtml(job.location || 'Não informado')}</p>
+          <p class="job-location">Local: ${escapeHtml(job.location || 'NÃ£o informado')}</p>
           <div class="job-description-block">
-            <strong class="job-description-heading">Descrição do trabalho</strong>
+            <strong class="job-description-heading">DescriÃ§Ã£o do trabalho</strong>
             <span class="job-description-content">${formatJobDescription(getPrimaryJobDescription(job.description))}</span>
           </div>
           <button type="button" class="btn btn-more" data-job-id="${job.id}">Saiba mais</button>
@@ -270,7 +270,7 @@ function renderJobs(jobs) {
         <div class="job-card-full hidden">
           <h3>${escapeHtml(job.title)}</h3>
           <span class="job-tag">${escapeHtml(job.type)}</span>
-          <p class="job-location">Local: ${escapeHtml(job.location || 'Não informado')}</p>
+          <p class="job-location">Local: ${escapeHtml(job.location || 'NÃ£o informado')}</p>
           <div class="job-description-block">${formatJobDescription(job.description)}</div>
           <div class="job-card-actions">
             <button type="button" class="btn btn-apply" data-job-id="${job.id}">Candidatar-se</button>
@@ -288,11 +288,11 @@ function renderJobs(jobs) {
   // Criar indicadores
   createCarouselIndicators(jobs.length);
 
-  // Configurar os estados resumido/completo e os botões de candidatura
+  // Configurar os estados resumido/completo e os botÃµes de candidatura
   setupJobDetailsButtons();
   setupApplyButtons();
   
-  // Configurar navegação do carrosel
+  // Configurar navegaÃ§Ã£o do carrosel
   setupCarouselNavigation(jobs.length);
 }
 
@@ -307,7 +307,7 @@ function setupJobDetailsButtons() {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: `job_id=${encodeURIComponent(jobId)}`
-      }).catch(error => console.error('Não foi possível registrar o clique:', error));
+      }).catch(error => console.error('NÃ£o foi possÃ­vel registrar o clique:', error));
 
       card.querySelector('.job-card-summary')?.classList.add('hidden');
       card.querySelector('.job-card-full')?.classList.remove('hidden');
@@ -322,7 +322,7 @@ function setupJobDetailsButtons() {
       card.querySelector('.job-card-full')?.classList.add('hidden');
       card.querySelector('.job-card-summary')?.classList.remove('hidden');
 
-      // Reposiciona a tela no início do card enquanto ele volta ao resumo.
+      // Reposiciona a tela no inÃ­cio do card enquanto ele volta ao resumo.
       const headerOffset = 96;
       const cardTop = card.getBoundingClientRect().top + window.scrollY - headerOffset;
       window.scrollTo({
@@ -402,17 +402,17 @@ function populateJobSelect(jobs) {
   
   if (!vagaSelect) return;
 
-  // Preservar a vaga escolhida quando as opções forem recarregadas.
-  // Isso evita que o select volte para a opção inicial ao anexar um currículo
-  // ou quando a página dispara o recarregamento das vagas.
+  // Preservar a vaga escolhida quando as opÃ§Ãµes forem recarregadas.
+  // Isso evita que o select volte para a opÃ§Ã£o inicial ao anexar um currÃ­culo
+  // ou quando a pÃ¡gina dispara o recarregamento das vagas.
   const selectedJobId = vagaSelect.value;
 
-  // Limpar opções existentes (mantendo a primeira)
+  // Limpar opÃ§Ãµes existentes (mantendo a primeira)
   while (vagaSelect.options.length > 1) {
     vagaSelect.remove(1);
   }
 
-  // Adicionar opções das vagas
+  // Adicionar opÃ§Ãµes das vagas
   jobs.forEach(job => {
     const option = document.createElement('option');
     option.value = job.id;
@@ -440,17 +440,17 @@ function setupApplyButtons() {
         vagaSelect.value = jobId;
       }
       
-      // Mostrar o formulário
+      // Mostrar o formulÃ¡rio
       if (formSection) {
         formSection.classList.remove('hidden');
-        // Scroll suave para o formulário
+        // Scroll suave para o formulÃ¡rio
         formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
 }
 
-// Funcionalidade do formulário de candidatura
+// Funcionalidade do formulÃ¡rio de candidatura
 document.addEventListener('DOMContentLoaded', function () {
   const contactForm = document.querySelector('.contact-form');
   
@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
       
       const formData = new FormData(contactForm);
-      console.log('Formulário enviado. Dados:', Array.from(formData.entries()));
+      console.log('FormulÃ¡rio enviado. Dados:', Array.from(formData.entries()));
       const jobId = formData.get('job_id');
       const resumeFile = formData.get('formulario');
       const privacyAccepted = contactForm.querySelector('input[name="privacy_policy_accept"]');
@@ -473,19 +473,19 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (!privacyAccepted || !privacyAccepted.checked) {
-        alert('Você precisa aceitar a Política de Privacidade para continuar com a candidatura.');
+        alert('VocÃª precisa aceitar a PolÃ­tica de Privacidade para continuar com a candidatura.');
         privacyAccepted && privacyAccepted.focus();
         return;
       }
 
       if (!resumeFile || resumeFile.size === 0) {
-        alert('Anexe seu currículo em formato PDF ou DOCX.');
+        alert('Anexe seu currÃ­culo em formato PDF ou DOCX.');
         return;
       }
 
       const fileName = resumeFile.name.toLowerCase();
       if (!fileName.endsWith('.pdf') && !fileName.endsWith('.docx')) {
-        alert('Formato inválido. Envie somente arquivos .pdf ou .docx.');
+        alert('Formato invÃ¡lido. Envie somente arquivos .pdf ou .docx.');
         return;
       }
 
@@ -513,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function () {
           return { 
             status: response.status, 
             ok: response.ok, 
-            data: { error: 'Resposta inválida do servidor' } 
+            data: { error: 'Resposta invÃ¡lida do servidor' } 
           };
         });
       })
@@ -521,22 +521,22 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Resultado processado:', result);
         const { status, ok, data } = result;
         
-        // Verificar se a requisição foi bem-sucedida
+        // Verificar se a requisiÃ§Ã£o foi bem-sucedida
         if (ok && data.success) {
-          alert('Candidatura enviada com sucesso! Agradecemos sua participação.');
+          alert('Candidatura enviada com sucesso! Agradecemos sua participaÃ§Ã£o.');
           contactForm.reset();
           document.getElementById('formulario').classList.add('hidden');
         } else {
-          // Mostrar erro específico
+          // Mostrar erro especÃ­fico
           const errorMsg = data.error || data.message || `Erro do servidor (HTTP ${status})`;
           alert('Erro: ' + errorMsg);
           console.error('Erro na resposta:', data);
         }
       })
       .catch(error => {
-        console.error('Erro na requisição:', error);
+        console.error('Erro na requisiÃ§Ã£o:', error);
         console.error('Stack:', error.stack);
-        alert('Erro ao enviar candidatura. Verifique sua conexão e tente novamente.');
+        alert('Erro ao enviar candidatura. Verifique sua conexÃ£o e tente novamente.');
       })
       .finally(() => {
         if (submitButton) {
@@ -549,38 +549,78 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function initThemeToggle() {
-  const toggle = document.querySelector('.theme-toggle');
-  if (!toggle) return;
+  const toggles = Array.from(document.querySelectorAll('.theme-toggle'));
+  if (!toggles.length) return;
 
   const body = document.body;
-  const savedTheme = localStorage.getItem('labware-theme');
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem('labware-theme'); } catch (_) {}
+  const darkMode = savedTheme === 'dark';
 
-  applyTheme(isDark);
+  const applyTheme = (dark) => {
+    body.classList.toggle('dark-mode', dark);
+    toggles.forEach((toggle) => {
+      toggle.classList.toggle('active', dark);
+      toggle.setAttribute('aria-pressed', String(dark));
+      toggle.setAttribute('aria-label', dark ? 'Ativar modo claro' : 'Ativar modo escuro');
+      toggle.setAttribute('title', dark ? 'Ativar modo claro' : 'Ativar modo escuro');
+      const icon = toggle.querySelector('i');
+      const label = toggle.querySelector('span');
+      if (icon) {
+        icon.classList.toggle('fa-moon', !dark);
+        icon.classList.toggle('fa-sun', dark);
+      }
+      if (label) label.textContent = dark ? 'Modo claro' : 'Modo escuro';
+    });
+    try { localStorage.setItem('labware-theme', dark ? 'dark' : 'light'); } catch (_) {}
+  };
 
-  toggle.addEventListener('click', () => {
-    const nextIsDark = !body.classList.contains('dark-mode');
-    applyTheme(nextIsDark);
-  });
-
-  function applyTheme(darkMode) {
-    body.classList.toggle('dark-mode', darkMode);
-    toggle.classList.toggle('active', darkMode);
-    toggle.setAttribute('aria-pressed', String(darkMode));
-
-    const icon = toggle.querySelector('i');
-    const label = toggle.querySelector('span');
-
-    if (icon) {
-      icon.classList.toggle('fa-moon', !darkMode);
-      icon.classList.toggle('fa-sun', darkMode);
-    }
-
-    if (label) {
-      label.textContent = darkMode ? 'Light' : 'Dark';
-    }
-
-    localStorage.setItem('labware-theme', darkMode ? 'dark' : 'light');
-  }
+  applyTheme(darkMode);
+  toggles.forEach((toggle) => toggle.addEventListener('click', () => {
+    applyTheme(!body.classList.contains('dark-mode'));
+  }));
 }
+
+// InteraÃ§Ãµes visuais do destaque editorial da pÃ¡gina inicial.
+document.addEventListener('DOMContentLoaded', function () {
+  const strip = document.querySelector('.headline-strip');
+  const cards = strip ? Array.from(strip.querySelectorAll('.headline-card')) : [];
+  if (!cards.length) return;
+
+  let activeIndex = 0;
+  let timer;
+  const showHeadline = (index) => {
+    activeIndex = (index + cards.length) % cards.length;
+    cards.forEach((card, i) => {
+      card.classList.toggle('active', i === activeIndex);
+      card.setAttribute('aria-current', i === activeIndex ? 'true' : 'false');
+    });
+  };
+  const startRotation = () => {
+    window.clearInterval(timer);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      timer = window.setInterval(() => showHeadline(activeIndex + 1), 6000);
+    }
+  };
+
+  strip.querySelector('.headline-prev')?.addEventListener('click', () => { showHeadline(activeIndex - 1); startRotation(); });
+  strip.querySelector('.headline-next')?.addEventListener('click', () => { showHeadline(activeIndex + 1); startRotation(); });
+  strip.addEventListener('mouseenter', () => window.clearInterval(timer));
+  strip.addEventListener('mouseleave', startRotation);
+  strip.addEventListener('focusin', () => window.clearInterval(timer));
+  strip.addEventListener('focusout', startRotation);
+  showHeadline(0);
+  startRotation();
+
+  const visual = document.querySelector('.editorial-visual');
+  if (visual && window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    visual.addEventListener('pointermove', (event) => {
+      const rect = visual.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+      visual.style.transform = `perspective(1000px) rotateY(${x * 3}deg) rotateX(${-y * 3}deg) translateY(-2px)`;
+    });
+    visual.addEventListener('pointerleave', () => { visual.style.transform = ''; });
+  }
+});
+
